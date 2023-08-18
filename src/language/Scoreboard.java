@@ -4,21 +4,14 @@
  */
 package language;
 
+import java.util.List;
+
 /**
  *
  * @author joelmacias
  */
-public class User {
-    private String username;
-    
-    
-    public User(String username)
-    {
-        setUsername(username);
-    }
-    
-    public void setUsername(String username)
-    {
-        this.username = username;
-    }
+public interface Scoreboard {
+    public void updateScore(User user);
+    public void displayScoreboard();
+    public List<User> getTopScore(int number);
 }
