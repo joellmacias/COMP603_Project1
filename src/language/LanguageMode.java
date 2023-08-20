@@ -8,6 +8,6 @@ package language;
  *
  * @author joelmacias
  */
-public class LanguageMode {
+public abstract class LanguageMode {
     
 }
