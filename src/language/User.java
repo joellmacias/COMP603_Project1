@@ -11,7 +11,7 @@ package language;
 public class User {
     private String username;
     private int score;
-    
+    //make int an array?
     public User(String username)
     {
         setUsername(username);
