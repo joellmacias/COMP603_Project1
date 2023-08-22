@@ -10,4 +10,8 @@ package language;
  */
 public class VocabularyItem {
     
+    public VocabularyItem()
+    {
+        
+    }
 }
