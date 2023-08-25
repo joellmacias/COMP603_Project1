@@ -8,7 +8,7 @@ package language;
  *
  * @author joelmacias
  */
-public class Flashcards {
+public class Flashcards extends LanguageMode{
 
     public Flashcards()
     {

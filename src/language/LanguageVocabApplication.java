@@ -10,26 +10,10 @@ import java.util.List;
  *
  * @author joelmacias
  */
-public class LanguageVocabApplication implements Scoreboard {
-    
-    
-    @Override
-    public void updateScore(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void displayScoreboard() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public List<User> getTopScore(int number) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+public class LanguageVocabApplication {
     
     public static void main(String[] args) {
-        
-        
+        LanguageAppController application = new LanguageAppController();
+        application.startApp();
     }
 }

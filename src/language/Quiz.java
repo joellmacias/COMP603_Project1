@@ -8,7 +8,7 @@ package language;
  *
  * @author joelmacias
  */
-public class Quiz {
+public class Quiz extends LanguageMode{
     
     public Quiz()
     {

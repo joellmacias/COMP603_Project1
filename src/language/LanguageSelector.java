@@ -8,55 +8,42 @@ import java.util.Scanner;
 
 /**
  *
- * @author Bishop
+ * @author joellmacias
  */
-public class LanguageSelector 
-{
-    Scanner scanner = new Scanner(System.in);
-    int choice = scanner.nextInt();
-    String translatedText;
-    
-// user driven text to translate or have them select from array of words
-// if selecting from array of words will need need to display array then request user to select word to translate (in main)
+public class LanguageSelector {
 
-    public static String translate(String text, int choice) 
-    {
-        String translatedText = "";
-
-        switch (choice) 
-        {
-            case 1:
-                translatedText = translateToSpanish(text);
+    public Language selectLanguage() {
+        Scanner scan = new Scanner(System.in);
+        String input;
+        Language language = null;
+        System.out.println("Available Languages:");
+        System.out.println("1: Spanish 2: Maori 3: Samoan");
+        input = scan.nextLine();
+        switch (input.toLowerCase()) {
+            case "1": {
+                language = new Language("Spanish", "spanish.txt");
                 break;
-            case 2:
-                translatedText = translateToSamoan(text);
+            }
+            case "2": {
+                language = new Language("Maori", "maori.txt");
                 break;
-            case 3:
-                translatedText = translateToMāori(text);
+            }
+            case "3": {
+                language = new Language("Samoan", "samoan.txt");
                 break;
-            default:
-                translatedText = "Translation for this language is not supported.";
+            }
+            case "x":
+                    {
+                       language = null;
+                       break;
+                    }
+            default: {
+                System.out.println("Invalid selection. Please choose an available language.");
+                return selectLanguage();
+            }
         }
 
-        return translatedText;
+        return language;
     }
-    
-    public static String translateToSpanish(String text) 
-    {
-        // would implement the translation logic here
-        // just returning the same text in this eg assuming no translation
-        return "Spanish translation of: " + text;
-    }
-    
-    public static String translateToSamoan(String text) 
-    {
-        // replace this with actual translation code
-        return "Samoan translation of: " + text;
-    }
-    
-    public static String translateToMāori(String text) 
-    {
-        // replace this with actual translation code
-        return "Māori translation of: " + text;
-    }
+
 }
