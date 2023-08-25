@@ -13,6 +13,7 @@ import java.util.List;
 public class LanguageVocabApplication {
     
     public static void main(String[] args) {
-        LanguageAppController app = new LanguageAppController();
+        LanguageAppController application = new LanguageAppController();
+        application.startApp();
     }
 }
