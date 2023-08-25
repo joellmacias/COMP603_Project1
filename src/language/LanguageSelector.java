@@ -21,22 +21,21 @@ public class LanguageSelector {
         input = scan.nextLine();
         switch (input.toLowerCase()) {
             case "1": {
-                language = new Language("Spanish", "spanish.txt");
+                language = new Language("Spanish", "./resources/spanish.txt");
                 break;
             }
             case "2": {
-                language = new Language("Maori", "maori.txt");
+                language = new Language("Maori", "./resources/maori.txt");
                 break;
             }
             case "3": {
-                language = new Language("Samoan", "samoan.txt");
+                language = new Language("Samoan", "./resources/samoan.txt");
                 break;
             }
-            case "x":
-                    {
-                       language = null;
-                       break;
-                    }
+            case "x": {
+                language = null;
+                break;
+            }
             default: {
                 System.out.println("Invalid selection. Please choose an available language.");
                 return selectLanguage();

@@ -4,6 +4,9 @@
  */
 package language;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author joelmacias
@@ -12,11 +15,12 @@ public class Language {
 
     private String name;
     private String filePath;
-
+    private List<VocabularyItem> vocabularyItemList;
     
     public Language(String name, String filePath) {
         setName(name);
         setFilePath(filePath);
+        vocabularyItemList = new ArrayList<>();
     }
 
     public String getName() {
@@ -34,5 +38,14 @@ public class Language {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
-
+    
+    public void setVocabularyItemList(List<VocabularyItem> vocabList)
+    {
+        this.vocabularyItemList = vocabList;
+    }
+            
+    public List<VocabularyItem> getVocabularyItemList()
+    {
+        return vocabularyItemList;
+    }
 }

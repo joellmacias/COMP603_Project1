@@ -4,6 +4,11 @@
  */
 package language;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +18,25 @@ import java.util.List;
 public class FileLoader {
 
     public List<VocabularyItem> loadLanguageFromFile(Language language) {
-        return null;
+        ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
+        try {
+            BufferedReader inStream = new BufferedReader(new FileReader(language.getFilePath()));
+            String line;
+            while ((line = inStream.readLine()) != null) {
+                String[] split = line.split(" ", 3);
+                String word = split[0];
+                String translation = split[1];
+                int difficulty = Integer.parseInt(split[2]);
+                languageVocabList.add(new VocabularyItem(word, translation, difficulty));
+            }
+            inStream.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error while reading file" + e.getMessage());
+        }
+
+        return languageVocabList;
     }
 
     public void addUserToFile(User user, String filePath) {
@@ -21,7 +44,24 @@ public class FileLoader {
     }
 
     public List<User> loadUsersFromFile(String filePath) {
-        return null;
+        ArrayList<User> userList = new ArrayList<User>();
+        try {
+            BufferedReader inStream = new BufferedReader(new FileReader("./resources/users.txt"));
+            String line;
+            while ((line = inStream.readLine()) != null) {
+                String[] split = line.split(" ", 2);
+                String name = split[0];
+                int score = Integer.parseInt(split[1]);
+                userList.add(new User(name, score));
+            }
+            inStream.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error while reading file" + e.getMessage());
+        }
+
+        return userList;
     }
 
     public List<User> loadScoreboardFromFile(String filePath) {

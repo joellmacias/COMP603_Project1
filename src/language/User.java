@@ -23,6 +23,12 @@ public class User {
         setScore(0);
     }
     
+    public User(String username, int score)
+    {
+        setUsername(username);
+        setScore(score);
+    }
+    
     public void setUsername(String username)
     {
         this.username = username;
