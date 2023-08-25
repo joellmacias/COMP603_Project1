@@ -14,11 +14,8 @@ public class LanguageSelector
 {
     Scanner scanner = new Scanner(System.in);
     int choice = scanner.nextInt();
-    String translatedText;
+   
     
-// user driven text to translate or have them select from array of words
-// if selecting from array of words will need need to display array then request user to select word to translate (in main)
-
     public static String translate(String text, int choice) 
     {
         String translatedText = "";
