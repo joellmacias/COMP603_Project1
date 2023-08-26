@@ -56,6 +56,8 @@ public class FileLoader {
                 {
                     isUserFound = true;
                     j.setScore(currentUser.getScore());
+                    
+                    //test.
                 }
             }
             if (!isUserFound)
