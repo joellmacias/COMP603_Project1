@@ -69,10 +69,10 @@ public class LanguageAppController implements Scoreboard {
             }
             languageVocabList = loader.loadLanguageFromFile(language);
             language.setVocabularyItemList(languageVocabList);
-//            for (VocabularyItem item: language.getVocabularyItemList())
-//            {
-//                System.out.println(item.getDifficulty());
-//            } testing
+            for (VocabularyItem item: language.getVocabularyItemList())
+            {
+                System.out.println(item.getTranslation());
+            } 
            
             System.out.println(language.getName());
             System.out.println();
