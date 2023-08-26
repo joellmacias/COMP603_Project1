@@ -9,7 +9,9 @@ package language;
  * @author joelmacias
  */
 public class Flashcards extends LanguageMode{
-
+// Would you like the rules?
+// diffuclty etc
+    
     public Flashcards()
     {
         

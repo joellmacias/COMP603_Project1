@@ -40,7 +40,6 @@ public class LanguageAppController implements Scoreboard {
         Scanner scan = new Scanner(System.in);
         List<User> userList = new ArrayList();
         List<VocabularyItem> languageVocabList = new ArrayList();
-        
         userList = loader.loadUsersFromFile("users.txt");
 
         while (running) {
@@ -71,9 +70,22 @@ public class LanguageAppController implements Scoreboard {
             language.setVocabularyItemList(languageVocabList);
             for (VocabularyItem item: language.getVocabularyItemList())
             {
-                System.out.println(item.getTranslation());
+                System.out.println(item.getDifficulty());
             } 
-           
+//          testing purposes
+            System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x to exit)");
+            String userChoice = scan.nextLine().trim();
+            if ("x".equalsIgnoreCase(name)) {
+                stopApp();
+                break;
+            }
+            if ("f".equalsIgnoreCase(name)) {
+               Flashcards flashcards = new Flashcards();
+            }
+            if ("q".equalsIgnoreCase(name)) {
+                Quiz quiz = new Quiz();
+            }
+            
             System.out.println(language.getName());
             System.out.println();
             break;
@@ -85,3 +97,11 @@ public class LanguageAppController implements Scoreboard {
         System.out.println("Program ended.");
     }
 }
+
+
+//
+//1. mum 2. dad 3. bishop 4. joel
+// 
+
+
+// scoreboard + replaying the game + quiz + flashcarsd + abstract
