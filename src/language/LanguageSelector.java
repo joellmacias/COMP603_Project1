@@ -17,7 +17,7 @@ public class LanguageSelector {
         String input;
         Language language = null;
         System.out.println("Available Languages:");
-        System.out.println("1: Spanish 2: Maori 3: Samoan");
+        System.out.println("1: Spanish 2: Maori 3: Samoan (x to exit)");
         input = scan.nextLine();
         switch (input.toLowerCase()) {
             case "1": {
