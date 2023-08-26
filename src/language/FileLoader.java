@@ -63,7 +63,7 @@ public class FileLoader {
                 list.add(currentUser);
             }
             
-            BufferedWriter outStream = new BufferedWriter(new FileWriter("C://Users//Bishop//Downloads//PDC_Tutorials//resources//T04_users.txt"));
+            BufferedWriter outStream = new BufferedWriter(new FileWriter(filePath));
             
             for (User j : list)
             {
