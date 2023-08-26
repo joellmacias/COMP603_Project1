@@ -5,11 +5,15 @@
 package language;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -39,8 +43,39 @@ public class FileLoader {
         return languageVocabList;
     }
 
-    public void addUserToFile(User user, String filePath) {
-        //Bishop?   
+    public void addUserToFile(User user, String filePath)
+    {
+        try
+        {
+            ArrayList<User> list = generateUser();
+            boolean isUserFound = false;
+            
+            for (User j : list)
+            {
+                if (j.getUsername().equals(currentUser.getUsername()))
+                {
+                    isUserFound = true;
+                    j.setScore(currentUser.getScore());
+                }
+            }
+            if (!isUserFound)
+            {
+                list.add(currentUser);
+            }
+            
+            BufferedWriter outStream = new BufferedWriter(new FileWriter("C://Users//Bishop//Downloads//PDC_Tutorials//resources//T04_users.txt"));
+            
+            for (User j : list)
+            {
+                outStream.write(j.getUsername() + " " + j.getScore());
+                outStream.newLine();
+            }
+            outStream.close();
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public List<User> loadUsersFromFile(String filePath) {

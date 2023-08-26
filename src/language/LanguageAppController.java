@@ -14,7 +14,6 @@ import java.util.Scanner;
  */
 
 
-//test 
 public class LanguageAppController implements Scoreboard {
 
     private boolean running = true;
