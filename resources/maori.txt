@@ -1,6 +1,6 @@
 Hello Hola 1
-Thank you Gracias 1
-Cheers/Good Salud/Bueno 1
+Thanks Gracias 1
+Cheers Salud1
 Family Familia 1
 House Casa 1
 Canoe Canoa 1

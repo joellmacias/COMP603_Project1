@@ -13,9 +13,16 @@ import java.util.Random;
 public abstract class LanguageMode {
 
     private Language language;
-
-    public LanguageMode(Language language) {
+    private User user;
+    
+    public LanguageMode(Language language, User user) {
         this.language = language;
+        this.user = user;
+    }
+
+    public Language getLanguage() {
+        return language;
+
     }
 
     public VocabularyItem getRandomVocabularyItem() {
