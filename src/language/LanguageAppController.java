@@ -12,8 +12,6 @@ import java.util.Scanner;
  *
  * @author joelmacias
  */
-
-
 public class LanguageAppController implements Scoreboard {
 
     private boolean running = true;
@@ -63,6 +61,7 @@ public class LanguageAppController implements Scoreboard {
                 System.out.println("Hello " + name + "! We are thrilled to have you for the first time!");
 
             }
+            
             Language language = selector.selectLanguage();
             if (language == null) {
                 stopApp();
@@ -70,26 +69,29 @@ public class LanguageAppController implements Scoreboard {
             }
             languageVocabList = loader.loadLanguageFromFile(language);
             language.setVocabularyItemList(languageVocabList);
-            for (VocabularyItem item: language.getVocabularyItemList())
-            {
-                System.out.println(item.getDifficulty());
-            } 
+//            for (VocabularyItem item: language.getVocabularyItemList())
+//            {
+//                System.out.println(item.getDifficulty());
+//            } 
 //          testing purposes
-            System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x to exit)");
-            String userChoice = scan.nextLine().trim();
-            if ("x".equalsIgnoreCase(name)) {
-                stopApp();
-                break;
+            while (running) {
+                System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x to exit)");
+                String userChoice = scan.nextLine().trim();
+                if ("x".equalsIgnoreCase(userChoice)) {
+                    stopApp();
+                    break;
+                } else if ("f".equalsIgnoreCase(userChoice)) {
+                    Flashcards flashcards = new Flashcards(language, currentUser);
+                    flashcards.startMode();
+                    break;
+                } else if ("q".equalsIgnoreCase(userChoice)) {
+                    Quiz quiz = new Quiz(language, currentUser);
+                    quiz.startMode();
+                    break;
+                } else {
+                    System.out.println("Invalid input, please try again");
+                }
             }
-            if ("f".equalsIgnoreCase(name)) {
-               Flashcards flashcards = new Flashcards();
-            }
-            if ("q".equalsIgnoreCase(name)) {
-                Quiz quiz = new Quiz();
-            }
-            
-            System.out.println(language.getName());
-            System.out.println();
             break;
         }
     }
@@ -99,11 +101,3 @@ public class LanguageAppController implements Scoreboard {
         System.out.println("Program ended.");
     }
 }
-
-
-//
-//1. mum 2. dad 3. bishop 4. joel
-// 
-
-
-// scoreboard + replaying the game + quiz + flashcarsd + abstract

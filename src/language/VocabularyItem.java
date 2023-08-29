@@ -13,6 +13,11 @@ public class VocabularyItem {
     private String word;
     private String translation;
     private int difficulty;
+    
+    public VocabularyItem()
+    {
+        
+    }
    
     public VocabularyItem(String word, String translation, int difficulty) {
         setWord(word);

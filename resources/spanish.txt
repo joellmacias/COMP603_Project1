@@ -1,5 +1,5 @@
 Hello Hola 1
-Thank you Gracias 1
+Thanks Gracias 1
 Cheers/Good Salud/Bueno 1
 Family Familia 1
 House Casa 1
@@ -50,7 +50,7 @@ Many Muchos 2
 Letter Carta 2
 Telephone Teléfono 2
 Oven Horno 2
-Please Por favor 2
+Please Porfavor 2
 Respect Respeto 2
 Serve Servir 2
 Good Bueno 2
@@ -91,7 +91,7 @@ Small Pequeño 3
 Big Grande 3
 Tattoo Tatuaje 3
 Funny Divertido 3
-Sorry Lo siento 3
+Sorry Perdon 3
 Cry Llorar 3
 Laugh Reír 3
 Goodbye Adiós 3
