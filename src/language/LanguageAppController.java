@@ -41,28 +41,28 @@ public class LanguageAppController implements Scoreboard {
         List<User> userList = new ArrayList();
         List<VocabularyItem> languageVocabList = new ArrayList();
         userList = loader.loadUsersFromFile("users.txt");
+        Language language = null;
 
+        System.out.println("Welcome to Language Vocabulary Application! Type x at any time to exit.");
+        System.out.println("What is your name?");
+        String name = scan.nextLine().trim();
+        if ("x".equalsIgnoreCase(name)) {
+            stopApp();
+            return;
+        }
+        for (User existingUser : userList) {
+            if (existingUser.getUsername().equalsIgnoreCase(name)) {
+                currentUser = existingUser;
+                System.out.println("Hello " + name + "! Welcome back. Your highest score is " + currentUser.getScore());
+            }
+        }
+        if (currentUser == null) {
+            currentUser = new User(name);
+            System.out.println("Hello " + name + "! We are thrilled to have you for the first time!");
+
+        }
         while (running) {
-            System.out.println("Welcome to Language Vocabulary Application! Type x at any time to exit.");
-            System.out.println("What is your name?");
-            String name = scan.nextLine().trim();
-            if ("x".equalsIgnoreCase(name)) {
-                stopApp();
-                break;
-            }
-            for (User existingUser : userList) {
-                if (existingUser.getUsername().equalsIgnoreCase(name)) {
-                    currentUser = existingUser;
-                    System.out.println("Hello " + name + "! Welcome back. Your highest score is " + currentUser.getScore());
-                }
-            }
-            if (currentUser == null) {
-                currentUser = new User(name);
-                System.out.println("Hello " + name + "! We are thrilled to have you for the first time!");
-
-            }
-            
-            Language language = selector.selectLanguage();
+            language = selector.selectLanguage();
             if (language == null) {
                 stopApp();
                 break;
@@ -74,25 +74,24 @@ public class LanguageAppController implements Scoreboard {
 //                System.out.println(item.getDifficulty());
 //            } 
 //          testing purposes
-            while (running) {
-                System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x to exit)");
+            while (true) {
+                System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x to exit, g to go back)");
                 String userChoice = scan.nextLine().trim();
                 if ("x".equalsIgnoreCase(userChoice)) {
                     stopApp();
-                    break;
+                    return;
                 } else if ("f".equalsIgnoreCase(userChoice)) {
                     Flashcards flashcards = new Flashcards(language, currentUser);
                     flashcards.startMode();
-                    break;
                 } else if ("q".equalsIgnoreCase(userChoice)) {
                     Quiz quiz = new Quiz(language, currentUser, 20);
                     quiz.startMode();
+                } else if ("g".equalsIgnoreCase(userChoice)) {
                     break;
                 } else {
                     System.out.println("Invalid input, please try again");
                 }
             }
-            break;
         }
     }
 
