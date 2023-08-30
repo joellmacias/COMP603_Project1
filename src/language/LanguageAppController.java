@@ -5,6 +5,7 @@
 package language;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,20 +16,30 @@ import java.util.Scanner;
 public class LanguageAppController implements Scoreboard {
 
     private boolean running = true;
+    private List<User> scoreboard = new ArrayList<>();
 
     @Override
     public void updateScore(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (scoreboard.contains(user)) {
+            scoreboard.remove(user);
+        }
+        scoreboard.add(user);
+        Collections.sort(scoreboard, Collections.reverseOrder());
     }
 
     @Override
     public void displayScoreboard() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Scoreboard:");
+        for (int i = 0; i < scoreboard.size(); i++) {
+            User user = scoreboard.get(i);
+            System.out.println((i + 1) + ": " + user.getUsername() + " " + user.getScore());
+        }
     }
 
     @Override
     public List<User> getTopScore(int number) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("1");
+        return null;
     }
 
     public void startApp() {
@@ -40,7 +51,8 @@ public class LanguageAppController implements Scoreboard {
         Scanner scan = new Scanner(System.in);
         List<User> userList = new ArrayList();
         List<VocabularyItem> languageVocabList = new ArrayList();
-        userList = loader.loadUsersFromFile("users.txt");
+        userList = loader.loadUsersFromFile("./resources/users.txt");
+        scoreboard = loader.loadUsersFromFile("./resources/scoreboard.txt");
         Language language = null;
 
         System.out.println("Welcome to Language Vocabulary Application! Type x at any time to exit.");
@@ -75,7 +87,7 @@ public class LanguageAppController implements Scoreboard {
 //            } 
 //          testing purposes
             while (true) {
-                System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x to exit, g to go back)");
+                System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x/s to exit, g to go back)");
                 String userChoice = scan.nextLine().trim();
                 if ("x".equalsIgnoreCase(userChoice)) {
                     stopApp();
@@ -83,9 +95,14 @@ public class LanguageAppController implements Scoreboard {
                 } else if ("f".equalsIgnoreCase(userChoice)) {
                     Flashcards flashcards = new Flashcards(language, currentUser);
                     flashcards.startMode();
+
+                } else if ("s".equalsIgnoreCase(userChoice)) {
+                   displayScoreboard();
                 } else if ("q".equalsIgnoreCase(userChoice)) {
                     Quiz quiz = new Quiz(language, currentUser, 20);
                     quiz.startMode();
+                    updateScore(user);
+                    loader.addUserToFile(currentUser, "./resources/users.txt");
                 } else if ("g".equalsIgnoreCase(userChoice)) {
                     break;
                 } else {
