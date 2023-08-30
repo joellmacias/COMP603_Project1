@@ -22,7 +22,11 @@ public abstract class LanguageMode {
 
     public Language getLanguage() {
         return language;
-
+    }
+    
+    public User getUser()
+    {
+        return user;
     }
 
     public VocabularyItem getRandomVocabularyItem() {
