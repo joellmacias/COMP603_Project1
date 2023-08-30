@@ -17,9 +17,16 @@ public class Quiz extends LanguageMode {
 
     private Language language;
     private User user;
+    private int questions;
 
-    public Quiz(Language language, User user) {
+    public Quiz(Language language, User user, int questions) {
         super(language, user);
+        setQuestions(questions);
+
+    }
+
+    public void setQuestions(int questions) {
+        this.questions = questions;
     }
 
     public List<VocabularyItem> generateMultipleChoices(VocabularyItem answer) {
@@ -44,7 +51,7 @@ public class Quiz extends LanguageMode {
         displayInstructions();
         Scanner scan = new Scanner(System.in);
         int score = 0;
-        for (int i = 1; i <= 20; i++) {
+        for (int i = 1; i <= questions; i++) {
             VocabularyItem answer = getRandomVocabularyItem();
             List<VocabularyItem> choices = generateMultipleChoices(answer);
 
@@ -57,7 +64,9 @@ public class Quiz extends LanguageMode {
                 String userChoice = scan.nextLine();
 
                 if ("x".equalsIgnoreCase(userChoice)) {
+                    endMode();
                     break;
+                    
                 }
                 try {
 
@@ -68,7 +77,7 @@ public class Quiz extends LanguageMode {
                             score++;
                             break;
                         } else {
-                            System.out.println("Incorrect. The correct answer was " + answer.getTranslation() + " .");
+                            System.out.println("Incorrect. The correct answer was " + answer.getTranslation() + ".");
                             break;
                         }
                     } else {
@@ -80,17 +89,24 @@ public class Quiz extends LanguageMode {
             }
         }
         System.out.println("Your score was: " + score + "/20. Thanks for playing!");
-        
-        if(user.getScore() < score)
-        {
-            user.setScore(score);
-            System.out.println("Your previous highscore was "+user.getScore()+"!");
+
+        if (getUser().getScore() == 0) {
+            getUser().setScore(score);
+            System.out.println("Your first highscore is " + score + "!");
+
+        } else if (getUser().getScore() < score) {
+            System.out.println("Congratulations! You have set a new highscore of " + score + "!");
+            getUser().setScore(score);
+
+        } else {
+            System.out.println("Your best highscore is " + getUser().getScore() + "!");
         }
+        endMode();
     }
 
     @Override
     public void endMode() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Returning to menu.");
     }
 
     @Override

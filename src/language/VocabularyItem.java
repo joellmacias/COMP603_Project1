@@ -12,17 +12,14 @@ public class VocabularyItem {
 
     private String word;
     private String translation;
-    private int difficulty;
-    
-    public VocabularyItem()
-    {
-        
+
+    public VocabularyItem() {
+
     }
-   
-    public VocabularyItem(String word, String translation, int difficulty) {
+
+    public VocabularyItem(String word, String translation) {
         setWord(word);
         setTranslation(translation);
-        setDifficulty(difficulty);
     }
 
     public String getWord() {
@@ -41,11 +38,4 @@ public class VocabularyItem {
         this.translation = translation;
     }
 
-    public int getDifficulty() {
-        return difficulty;
-    }
-
-    public void setDifficulty(int difficulty) {
-        this.difficulty = difficulty;
-    }
 }

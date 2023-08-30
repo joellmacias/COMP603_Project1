@@ -27,11 +27,10 @@ public class FileLoader {
             BufferedReader inStream = new BufferedReader(new FileReader(language.getFilePath()));
             String line;
             while ((line = inStream.readLine()) != null) {
-                String[] split = line.split(" ", 3);
+                String[] split = line.split(" ", 2);
                 String word = split[0];
                 String translation = split[1];
-                int difficulty = Integer.parseInt(split[2]);
-                languageVocabList.add(new VocabularyItem(word, translation, difficulty));
+                languageVocabList.add(new VocabularyItem(word, translation));
             }
             inStream.close();
         } catch (FileNotFoundException e) {

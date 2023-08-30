@@ -85,7 +85,7 @@ public class LanguageAppController implements Scoreboard {
                     flashcards.startMode();
                     break;
                 } else if ("q".equalsIgnoreCase(userChoice)) {
-                    Quiz quiz = new Quiz(language, currentUser);
+                    Quiz quiz = new Quiz(language, currentUser, 20);
                     quiz.startMode();
                     break;
                 } else {
