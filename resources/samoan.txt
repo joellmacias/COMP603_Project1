@@ -1,100 +1,99 @@
-Hello Talofa 1
-Thank you Fa'afetai 1
-Cheers/Good Manuia 1
-Family Aiga 1
-House Fale 1
-Canoe Vaa 1
-Ocean Moana 1
-Turtle Laumei 1
-Fish I'a 1
-Sun La 1
-Moon Fai 1
-Forest Vao 1
-Water Vai 1
-Family Aiga 1
-Day Aso 1
-Night Po 1
-Morning Ta eao 1
-Afternoon/Evening Afiafi 1
-Church Sapati 1
-Flower Uo 1
-Food Mea'ai 1
-Coconut Suafa 1
-Banana Va'aiga 1
-Head Ulu 1
-Foot/Leg Vae 1
-Hand Lima 1
-Body Tino 1
-Week Aso 1
-Month Masina 2
-Year Tausaga 2
-Teacher Faiaoga 2
-Child Tamaiti 2
-Parent Matua 2
-Woman Tama'ita'i 2
-Man Tama'ine 2
-Boy Tama 2
-Girl Tina 2
-Friend Faia'i 2
-Identity Fa'asinomaga 2
-Gift Tofiga 2
-World Lalolagi 2
-Spirit Agaga 2
-Wind Matagi 2
-Lightning Uila 2
-Rain Sami 2
-Fire Fai 2
-Earthquake Fualu 2
-Journey Malaga 2
-Many Tele 2
-Letter Leka 2
-Telephone Telefono 2
-Oven Umu 2
-Please Fa'amolemole 2
-Respect Faaaloalo 2
-Serve Tautua 2
-Good Lelei 2
-Bad Leaga 2
-School Aoga 2
-Computer Konekarate 2
-Book Tusi 2
-Coconut Suafa 2
-Sarong Lavalava 2
-Net Upega 2
-Car Ta'avale 2
-Road Auala 2
-Sunday Sanele 3
-Two Lua 3
-Three Tolu 3
-Four Fa 3
-Five Lima 3
-Six Ono 3
-Seven Fitu 3
-Eight Valu 3
-Nine Iva 3
-Ten Sefulu 3
-Bird Manu 3
-Chicken Moa 3
-Pig Puaka 3
-Dog 'Afa 3
-Cat Pusi 3
-Front Laumua 3
-Before Luma 3
-Wide Leutele 3
-Heart Loto 3
-Happy Fiafia 3
-Sad Ma'eu 3
-Strong Tau 3
-Sleep Moe 3
-Well Mālo 3
-Small Laitiiti 3
-Big Telea 3
-Tattoo Tatau 3
-Funny Taule'ale'a 3
-Sorry Fa'amālō 3
-Cry Liliu 3
-Laugh Mimiti 3
-Goodbye Tofa 3
-Rest Mālōlō 3
-Busy Lavea 3
-Shy Leitio 3
+Hello Talofa
+Thanks Fa'afetai
+Cheers Manuia
+Bed Moega
+House Fale
+Canoe Vaa
+Ocean Moana
+Turtle Laumei
+Fish I'a
+Sun La
+Moon Fai
+Forest Vao
+Water Vai
+Family Aiga
+Day Aso
+Night Po
+Morning Taeao
+Evening Afiafi
+Church Sapati
+Flower Uo
+Food Mea'ai
+Coconut Suafa
+Banana Va'aiga
+Head Ulu
+Foot Vae
+Hand Lima
+Body Tino
+Week Aso
+Month Masina
+Year Tausaga
+Teacher Faiaoga
+Child Tamaiti
+Parent Matua
+Woman Tama'ita'i
+Man Tama'ine
+Boy Tama
+Girl Tina
+Friend Faia'i
+Identity Fa'asinomaga
+Gift Tofiga
+World Lalolagi
+Spirit Agaga
+Wind Matagi
+Lightning Uila
+Rain Sami
+Fire Fai
+Earthquake Fualu
+Journey Malaga
+Many Tele
+Letter Leka
+Telephone Telefono
+Oven Umu
+Please Fa'amolemole
+Respect Faaaloalo
+Serve Tautua
+Good Lelei
+Bad Leaga
+School Aoga
+Computer Konekarate
+Book Tusi
+Sarong Lavalava
+Net Upega
+Car Ta'avale
+Road Auala
+Sunday Sanele
+Two Lua
+Three Tolu
+Four Fa
+Five Lima
+Six Ono
+Seven Fitu
+Eight Valu
+Nine Iva
+Ten Sefulu
+Bird Manu
+Chicken Moa
+Pig Puaka
+Dog 'Afa
+Cat Pusi
+Front Laumua
+Before Luma
+Wide Leutele
+Heart Loto
+Happy Fiafia
+Sad Ma'eu
+Strong Tau
+Sleep Moe
+Well Mālo
+Small Laitiiti
+Big Telea
+Tattoo Tatau
+Funny Taule'ale'a
+Sorry Fa'amālō
+Cry Liliu
+Laugh Mimiti
+Goodbye Tofa
+Rest Mālōlō
+Busy Lavea
+Shy Leitio
