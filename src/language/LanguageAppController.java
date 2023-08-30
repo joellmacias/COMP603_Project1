@@ -94,6 +94,7 @@ public class LanguageAppController implements Scoreboard {
                     return;
                 } else if ("f".equalsIgnoreCase(userChoice)) {
                     Flashcards flashcards = new Flashcards(language, currentUser);
+                    flashcards.getLanguage();
                     flashcards.startMode();
 
                 } else if ("s".equalsIgnoreCase(userChoice)) {
