@@ -1,100 +1,100 @@
-Hello Hola 1
-Thanks Gracias 1
-Cheers Salud1
-Family Familia 1
-House Casa 1
-Canoe Canoa 1
-Ocean Océano 1
-Turtle Tortuga 1
-Fish Pez 1
-Sun Sol 1
-Moon Luna 1
-Forest Bosque 1
-Water Agua 1
-Family Familia 1
-Day Día 1
-Night Noche 1
-Morning Mañana 1
-Afternoon/Evening Tarde/Noche 1
-Church Iglesia 1
-Flower Flor 1
-Food Comida 1
-Coconut Coco 1
-Banana Plátano 1
-Head Cabeza 1
-Foot/Leg Pie/Pierna 1
-Hand Mano 1
-Body Cuerpo 1
-Week Semana 1
-Month Mes 2
-Year Año 2
-Teacher Profesor 2
-Child Niño 2
-Parent Padre/Madre 2
-Woman Mujer 2
-Man Hombre 2
-Boy Niño 2
-Girl Niña 2
-Friend Amigo 2
-Identity Identidad 2
-Gift Regalo 2
-World Mundo 2
-Spirit Espíritu 2
-Wind Viento 2
-Lightning Relámpago 2
-Rain Lluvia 2
-Fire Fuego 2
-Earthquake Terremoto 2
-Journey Viaje 2
-Many Muchos 2
-Letter Carta 2
-Telephone Teléfono 2
-Oven Horno 2
-Please Por favor 2
-Respect Respeto 2
-Serve Servir 2
-Good Bueno 2
-Bad Malo 2
-School Escuela 2
-Computer Computadora 2
-Book Libro 2
-Coconut Coco 2
-Sarong Pareo 2
-Net Red 2
-Car Coche 2
-Road Camino 2
-Sunday Domingo 3
-Two Dos 3
-Three Tres 3
-Four Cuatro 3
-Five Cinco 3
-Six Seis 3
-Seven Siete 3
-Eight Ocho 3
-Nine Nueve 3
-Ten Diez 3
-Bird Pájaro 3
-Chicken Pollo 3
-Pig Cerdo 3
-Dog Perro 3
-Cat Gato 3
-Front Frente 3
-Before Antes 3
-Wide Ancho 3
-Heart Corazón 3
-Happy Feliz 3
-Sad Triste 3
-Strong Fuerte 3
-Sleep Dormir 3
-Well Bien 3
-Small Pequeño 3
-Big Grande 3
-Tattoo Tatuaje 3
-Funny Divertido 3
-Sorry Lo siento 3
-Cry Llorar 3
-Laugh Reír 3
-Goodbye Adiós 3
-Rest Descansar 3
-Busy Ocupado 3
-Shy Tímido 3
+Hello Kia ora
+Thanks Mihi
+Cheers Kiaora
+Bed Moenga
+House Whare
+Canoe Waka
+Ocean Moana
+Turtle Honu
+Fish Ika
+Sun Rā
+Moon Marama
+Forest Ngahere
+Water Wai
+Family Whānau
+Day Rā
+Night Pō
+Morning Ata
+Evening Ahiahi
+Church Whare
+Flower Putiputi
+Food Kai
+Coconut Niu
+Banana Panana
+Head Upoko
+Foot Waewae
+Hand Ringa
+Body Tinana
+Week Wiki
+Month Marama
+Year Tau
+Teacher Kaiako
+Child Tamariki
+Parent Matua
+Woman Wahine
+Man Tane
+Boy Tama
+Girl Kotiro
+Friend Hoa
+Identity Tuakiri
+Gift Koha
+World Ao
+Spirit Wairua
+Wind Hau
+Lightning Rauhī
+Rain Ua
+Fire Ahi
+Earthquake Mōhiohio
+Journey Haerenga
+Many Maha
+Letter Wāhanga
+Telephone whakapā
+Oven Umere
+Please Koingo
+Respect Manaaki
+Serve Mahi
+Good Pai
+Bad kino
+School Kura
+Computer Rorohiko
+Book Pukapuka
+Coconut Niu
+Sarong Parawai
+Net Whāriki
+Car Waka
+Road Ara
+Sunday Rātapu
+Two Rua
+Three Toru
+Four Whā
+Five Rima
+Six Ono
+Seven Whitu
+Eight Waru
+Nine Iwa
+Ten Tekau
+Bird Manu
+Chicken Mōkai
+Pig Poaka
+Dog Kuri
+Cat Ngeru
+Front Mua
+Before Imua
+Wide Nui
+Heart Manawa
+Happy Harikoa
+Sad Māuiui
+Strong Kaha
+Sleep Moe
+Well Pai
+Small Iti
+Big Nui
+Tattoo Moko
+Funny Whakakata
+Sorry Aroha
+Cry Tangi
+Laugh Kata
+Goodbye Haere
+Rest Whakatā
+Busy Whakangahau
+Shy Whakawā
