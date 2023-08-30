@@ -65,7 +65,7 @@ public class Quiz extends LanguageMode {
 
                 if ("x".equalsIgnoreCase(userChoice)) {
                     endMode();
-                    break;
+                    return;
                     
                 }
                 try {
@@ -115,6 +115,7 @@ public class Quiz extends LanguageMode {
         System.out.println("1: You will see a word in English.");
         System.out.println("2: You will select the correct translation in " + getLanguage().getName() + " from the multiple-choice options.");
         System.out.println("3: Your score will be calculated based on your answers.");
-        System.out.println("4: There are 20 questions in total, good luck!\n");
+        System.out.println("4: Press x at any time to go back to menu. ");
+        System.out.println("5: There are 20 questions in total, good luck!\n");
     }
 }

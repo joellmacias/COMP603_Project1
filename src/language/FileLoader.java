@@ -42,45 +42,37 @@ public class FileLoader {
         return languageVocabList;
     }
 
-    public void addUserToFile(User user, String filePath)
-    {
-        try
-        {
-            ArrayList<User> list = generateUser();
+    public void addUserToFile(User currentUser, String filePath) {
+        try {
+            ArrayList<User> userList = loadUsersFromFile("./resources/users.txt");
             boolean isUserFound = false;
-            
-            for (User j : list)
-            {
-                if (j.getUsername().equals(currentUser.getUsername()))
-                {
+
+            for (User existingUser : userList) {
+                if (existingUser.getUsername().equals(currentUser.getUsername())) {
                     isUserFound = true;
-                    j.setScore(currentUser.getScore());
+                    existingUser.setScore(currentUser.getScore());
                 }
             }
-            if (!isUserFound)
-            {
-                list.add(currentUser);
+            if (!isUserFound) {
+                userList.add(currentUser);
             }
-            
+
             BufferedWriter outStream = new BufferedWriter(new FileWriter(filePath));
-            
-            for (User j : list)
-            {
-                outStream.write(j.getUsername() + " " + j.getScore());
+
+            for (User user : userList) {
+                outStream.write(user.getUsername() + " " + user.getScore());
                 outStream.newLine();
             }
             outStream.close();
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public List<User> loadUsersFromFile(String filePath) {
+    public ArrayList<User> loadUsersFromFile(String filePath) {
         ArrayList<User> userList = new ArrayList<User>();
         try {
-            BufferedReader inStream = new BufferedReader(new FileReader("./resources/users.txt"));
+            BufferedReader inStream = new BufferedReader(new FileReader(filePath));
             String line;
             while ((line = inStream.readLine()) != null) {
                 String[] split = line.split(" ", 2);
@@ -98,13 +90,20 @@ public class FileLoader {
         return userList;
     }
 
-    public List<User> loadScoreboardFromFile(String filePath) {
-        return null;
+    public void addScoreboardToFile(ArrayList<User> users, String filePath) {
+        try {
+            ArrayList<User> userList = users;
+           
+            BufferedWriter outStream = new BufferedWriter(new FileWriter(filePath));
+
+            for (User user : userList) {
+                outStream.write(user.getUsername() + " " + user.getScore());
+                outStream.newLine();
+            }
+            outStream.close();
+        } catch (IOException ex) {
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public void addScoreboardToFile(List<User> users, String filePath) {
-
-    }
-    
-    
 }
