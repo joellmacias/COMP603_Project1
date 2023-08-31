@@ -44,7 +44,7 @@ public class FileLoader {
 
     public void addUserToFile(User currentUser, String filePath) {
         try {
-            ArrayList<User> userList = loadUsersFromFile("./resources/users.txt");
+            ArrayList<User> userList = loadUsersFromFile(filePath);
             boolean isUserFound = false;
 
             for (User existingUser : userList) {
@@ -90,9 +90,9 @@ public class FileLoader {
         return userList;
     }
 
-    public void addScoreboardToFile(ArrayList<User> users, String filePath) {
+    public void addScoreboardToFile(List<User> users, String filePath) {
         try {
-            ArrayList<User> userList = users;
+            List<User> userList = users;
            
             BufferedWriter outStream = new BufferedWriter(new FileWriter(filePath));
 
