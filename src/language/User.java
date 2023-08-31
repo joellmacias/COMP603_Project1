@@ -8,7 +8,7 @@ package language;
  *
  * @author joelmacias
  */
-public class User {
+public class User implements Comparable<User>{
     private String username;
     private int score;
     
@@ -54,6 +54,11 @@ public class User {
         {
         this.score+=value;
         }
+    }
+
+    @Override
+    public int compareTo(User other) {
+        return Integer.compare(this.score, other.score);
     }
             
 }

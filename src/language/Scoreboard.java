@@ -12,6 +12,6 @@ import java.util.List;
  */
 public interface Scoreboard {
     public void updateScore(User user);
-    public void displayScoreboard();
+    public void displayScoreboard(int number);
     public List<User> getTopScore(int number);
 }

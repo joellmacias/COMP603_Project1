@@ -20,17 +20,26 @@ public class LanguageAppController implements Scoreboard {
 
     @Override
     public void updateScore(User user) {
-        if (scoreboard.contains(user)) {
-            scoreboard.remove(user);
+
+        boolean isUserFound = false;
+
+        for (User existingUser : scoreboard) {
+            if (existingUser.getUsername().equals(user.getUsername())) {
+                isUserFound = true;
+                existingUser.setScore(user.getScore());
+            }
         }
-        scoreboard.add(user);
+        if (!isUserFound) {
+            scoreboard.add(user);
+        }
         Collections.sort(scoreboard, Collections.reverseOrder());
     }
 
     @Override
-    public void displayScoreboard() {
-        System.out.println("Scoreboard:");
-        for (int i = 0; i < scoreboard.size(); i++) {
+    public void displayScoreboard(int number) {
+        System.out.println("Top " + number + " Scoreboard:");
+        List<User> topUsers = getTopScore(number);
+        for (int i = 0; i < topUsers.size(); i++) {
             User user = scoreboard.get(i);
             System.out.println((i + 1) + ": " + user.getUsername() + " " + user.getScore());
         }
@@ -38,8 +47,13 @@ public class LanguageAppController implements Scoreboard {
 
     @Override
     public List<User> getTopScore(int number) {
-        System.out.println("1");
-        return null;
+        List<User> topUsers = new ArrayList();
+        Collections.sort(scoreboard, Collections.reverseOrder());
+
+        for (int i = 0; i < Math.min(number, scoreboard.size()); i++) {
+            topUsers.add(scoreboard.get(i));
+        }
+        return topUsers;
     }
 
     public void startApp() {
@@ -65,7 +79,7 @@ public class LanguageAppController implements Scoreboard {
         for (User existingUser : userList) {
             if (existingUser.getUsername().equalsIgnoreCase(name)) {
                 currentUser = existingUser;
-                System.out.println("Hello " + name + "! Welcome back. Your highest score is " + currentUser.getScore());
+                System.out.println("Hello " + name + "! Welcome back. Your highest score is " + currentUser.getScore() + ". ");
             }
         }
         if (currentUser == null) {
@@ -81,29 +95,23 @@ public class LanguageAppController implements Scoreboard {
             }
             languageVocabList = loader.loadLanguageFromFile(language);
             language.setVocabularyItemList(languageVocabList);
-//            for (VocabularyItem item: language.getVocabularyItemList())
-//            {
-//                System.out.println(item.getDifficulty());
-//            } 
-//          testing purposes
             while (true) {
-                System.out.println("Would you like to practice with Flashcards or take a Quiz? (f/q/x/s to exit, g to go back)");
+                System.out.println("\nWould you like to practice with Flashcards, take a Quiz or view the Scoreboard? (f/q/s/x/g): x to exit, g to go back)");
                 String userChoice = scan.nextLine().trim();
                 if ("x".equalsIgnoreCase(userChoice)) {
                     stopApp();
                     return;
                 } else if ("f".equalsIgnoreCase(userChoice)) {
                     Flashcards flashcards = new Flashcards(language, currentUser);
-                    flashcards.getLanguage();
                     flashcards.startMode();
-
                 } else if ("s".equalsIgnoreCase(userChoice)) {
-                   displayScoreboard();
+                    displayScoreboard(10);
                 } else if ("q".equalsIgnoreCase(userChoice)) {
                     Quiz quiz = new Quiz(language, currentUser, 20);
                     quiz.startMode();
-                    updateScore(user);
+                    updateScore(currentUser);
                     loader.addUserToFile(currentUser, "./resources/users.txt");
+                    loader.addScoreboardToFile(scoreboard, "./resources/scoreboard.txt");
                 } else if ("g".equalsIgnoreCase(userChoice)) {
                     break;
                 } else {

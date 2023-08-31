@@ -31,18 +31,24 @@ public class Quiz extends LanguageMode {
 
     public List<VocabularyItem> generateMultipleChoices(VocabularyItem answer) {
         List<VocabularyItem> choices = new ArrayList<>();
-
-        VocabularyItem one = getRandomVocabularyItem();
-        VocabularyItem two = getRandomVocabularyItem();
-        VocabularyItem three = getRandomVocabularyItem();
-
         choices.add(answer);
-        choices.add(one);
-        choices.add(two);
-        choices.add(three);
 
+        while (choices.size() < 4) {
+            VocabularyItem randomVocab = getRandomVocabularyItem();
+            boolean unique = true;
+            for (VocabularyItem existingChoice : choices) {
+                if (existingChoice.getWord().equalsIgnoreCase(randomVocab.getWord())) {
+                    unique = false;
+                    break;
+                }
+            }
+
+            if (unique) {
+                choices.add(randomVocab);
+            }
+
+        }
         Collections.shuffle(choices);
-
         return choices;
     }
 
@@ -56,7 +62,7 @@ public class Quiz extends LanguageMode {
             List<VocabularyItem> choices = generateMultipleChoices(answer);
 
             while (true) {
-                System.out.println("Question " + i + ": What is the translation of " + answer.getWord() + "?");
+                System.out.println("\nQuestion " + i + ": What is the translation of " + answer.getWord() + "?");
                 for (int j = 0; j < choices.size(); j++) {
                     System.out.println((j + 1) + ": " + choices.get(j).getTranslation());
                 }
@@ -66,14 +72,14 @@ public class Quiz extends LanguageMode {
                 if ("x".equalsIgnoreCase(userChoice)) {
                     endMode();
                     return;
-                    
+
                 }
                 try {
 
                     int userChoiceInt = Integer.parseInt(userChoice);
                     if (userChoiceInt <= choices.size() && userChoiceInt > 0) {
                         if (choices.get(userChoiceInt - 1).getWord().equalsIgnoreCase(answer.getWord())) {
-                            System.out.println("Correct!\n");
+                            System.out.println("Correct!");
                             score++;
                             break;
                         } else {
@@ -105,13 +111,8 @@ public class Quiz extends LanguageMode {
     }
 
     @Override
-    public void endMode() {
-        System.out.println("Returning to menu.");
-    }
-
-    @Override
     public void displayInstructions() {
-        System.out.println("Quiz mode:");
+        System.out.println("\nQuiz mode:");
         System.out.println("1: You will see a word in English.");
         System.out.println("2: You will select the correct translation in " + getLanguage().getName() + " from the multiple-choice options.");
         System.out.println("3: Your score will be calculated based on your answers.");

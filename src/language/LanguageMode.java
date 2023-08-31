@@ -37,7 +37,10 @@ public abstract class LanguageMode {
 
     public abstract void startMode();
 
-    public abstract void endMode();
+    public void endMode()
+    {
+        System.out.println("Returning to menu.");
+    }
 
     public abstract void displayInstructions();
 }
