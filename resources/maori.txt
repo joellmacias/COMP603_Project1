@@ -38,7 +38,6 @@ Identity Tuakiri
 Gift Koha
 World Ao
 Spirit Wairua
-Wind Hau
 Lightning Rauhī
 Rain Ua
 Fire Ahi
@@ -101,52 +100,51 @@ Mountain Maunga
 Sky Rangi
 Cloud Kapua
 Wind Hau
-Flower Putiputi
 Leaf Rau
-Fruit
-Seed
+Fruit Hua
+Seed Hē
 Petal
-Rock
-Sand
-Island
-Valley
-Desert
-Sunset
-Sunrise
-Star
-Earth
-Reflection
-Rainbow
-Window
-Chair
-Door
-Bed
-Curtain
-Desk
-Carpet
-Drawer
-Shelf
-Bookshelf
-Couch
-Pillow
-Blanket
-Vase
-Plant
-Painting
-Beach
-Lamp
-Clock
-Mirror
-Key
-Hat
-Table
-Apple
-Tree
-Red
-Run
-Milk
-Egg
-Onion
-Potato
-Carrot
-Tomato
+Rock Kōhatu
+Sand One
+Island Motu
+Valley Rohe
+Desert Pōrohe
+Sunset Kōpūtai
+Sunrise Tuarangi
+Star Whetū
+Earth Whenua
+Reflection Whakaata
+Rainbow Kāhu
+Window Matapihi
+Chair Tūru
+Door Tari
+Bed Moenga
+Curtain Kurutai
+Desk Tāmau
+Carpet Karapū
+Drawer Pouaka
+Shelf Pouaka
+Bookshelf 
+Couch Wharikoa
+Pillow Puna
+Blanket Paru
+Vase Paraihe
+Plant Putiputi
+Painting Whakairo
+Beach Onepū
+Lamp Rama
+Clock Karaka
+Mirror Whakaata
+Key Kī
+Hat Pōtae
+Table Pouaka
+Apple Āporo
+Tree Rākau
+Red Whero
+Run Rere
+Milk Waiu
+Egg Hēki
+Onion Pūtēneti
+Potato Rīwai
+Carrot Kāroti
+Tomato Tōmato
