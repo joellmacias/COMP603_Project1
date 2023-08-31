@@ -103,7 +103,6 @@ Wind Viento
 Leaf Hoja
 Fruit Fruta
 Seed Semilla
-Petal Pétalo
 Rock Roca
 Sand Arena
 Island Isla
@@ -114,7 +113,6 @@ Sunrise Amanecer
 Star Estrella
 Earth Tierra
 Reflection Reflejo
-Rainbow Arcoíris
 Window Ventana
 Chair Silla
 Door Puerta
@@ -124,7 +122,6 @@ Desk Escritorio
 Carpet Alfombra
 Drawer Cajón
 Shelf Estante
-Bookshelf Estantería
 Couch Sofá
 Pillow Almohada
 Blanket Manta
@@ -148,3 +145,6 @@ Onion Cebolla
 Potato Papa
 Carrot Zanahoria
 Tomato Tomate
+Meat Carne
+Jacket Chaqueta
+Shirt Camisa
