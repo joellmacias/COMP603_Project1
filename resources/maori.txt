@@ -56,7 +56,7 @@ School Kura
 Computer Rorohiko
 Book Pukapuka
 Coconut Niu
-Sarong Parawai
+Doctor Rata
 Net Whāriki
 Car Waka
 Road Ara
@@ -103,7 +103,6 @@ Wind Hau
 Leaf Rau
 Fruit Hua
 Seed Hē
-Petal
 Rock Kōhatu
 Sand One
 Island Motu
@@ -114,7 +113,6 @@ Sunrise Tuarangi
 Star Whetū
 Earth Whenua
 Reflection Whakaata
-Rainbow Kāhu
 Window Matapihi
 Chair Tūru
 Door Tari
@@ -123,8 +121,7 @@ Curtain Kurutai
 Desk Tāmau
 Carpet Karapū
 Drawer Pouaka
-Shelf Pouaka
-Bookshelf 
+Shelf Pouaka 
 Couch Wharikoa
 Pillow Puna
 Blanket Paru
@@ -148,3 +145,6 @@ Onion Pūtēneti
 Potato Rīwai
 Carrot Kāroti
 Tomato Tōmato
+Meat Mīti
+Jacket Māwhiti
+Shirt Hū
