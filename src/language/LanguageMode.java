@@ -15,6 +15,7 @@ public abstract class LanguageMode {
     private Language language;
     private User user;
     
+    //Languagemode constructor 
     public LanguageMode(Language language, User user) {
         this.language = language;
         this.user = user;
@@ -28,19 +29,20 @@ public abstract class LanguageMode {
     {
         return user;
     }
-
+    
+    // generate random vocabulary item for a language mode
     public VocabularyItem getRandomVocabularyItem() {
         Random random = new Random();
         int randomIndex = random.nextInt(language.getVocabularyItemList().size());
         return language.getVocabularyItemList().get(randomIndex);
     }
 
-    public abstract void startMode();
-
     public void endMode()
     {
         System.out.println("Returning to menu.");
     }
+    
+    public abstract void startMode();
 
     public abstract void displayInstructions();
 }

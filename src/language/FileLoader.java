@@ -21,6 +21,8 @@ import java.util.logging.Logger;
  */
 public class FileLoader {
 
+    //This is the Load Language text file from resources
+    //Each line is split by the space bar and added to a new vocabulary item
     public List<VocabularyItem> loadLanguageFromFile(Language language) {
         ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
         try {
@@ -38,10 +40,12 @@ public class FileLoader {
         } catch (IOException e) {
             System.out.println("Error while reading file" + e.getMessage());
         }
-
         return languageVocabList;
     }
-
+    
+    //adds a user to the user.txt file, checks if the users exists and if it does
+    // sets a new score for that existing user, if the user isn't in that file
+    // it adds it to the userList and saves it to the file.
     public void addUserToFile(User currentUser, String filePath) {
         try {
             ArrayList<User> userList = loadUsersFromFile(filePath);
@@ -69,6 +73,8 @@ public class FileLoader {
         }
     }
 
+    //This loads a user list from the files, splitting each line into user and score
+    // and saving it to a user and returning an arraylist
     public ArrayList<User> loadUsersFromFile(String filePath) {
         ArrayList<User> userList = new ArrayList<User>();
         try {
@@ -89,7 +95,8 @@ public class FileLoader {
 
         return userList;
     }
-
+    
+    //This adds an updated scoreboard to the scoreboard.txt file
     public void addScoreboardToFile(List<User> users, String filePath) {
         try {
             List<User> userList = users;

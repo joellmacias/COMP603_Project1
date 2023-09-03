@@ -18,6 +18,7 @@ public class LanguageAppController implements Scoreboard {
     private boolean running = true;
     private List<User> scoreboard = new ArrayList<>();
 
+    //Update scoreboard by adding a user and then sorting it descending
     @Override
     public void updateScore(User user) {
 
@@ -35,6 +36,7 @@ public class LanguageAppController implements Scoreboard {
         Collections.sort(scoreboard, Collections.reverseOrder());
     }
 
+    //Display scoreboard function taking in an int parameter
     @Override
     public void displayScoreboard(int number) {
         System.out.println("Top " + number + " Scoreboard:");
@@ -45,6 +47,7 @@ public class LanguageAppController implements Scoreboard {
         }
     }
 
+    // returns a scoreboard user list taking in the number of users you would like to display
     @Override
     public List<User> getTopScore(int number) {
         List<User> topUsers = new ArrayList();

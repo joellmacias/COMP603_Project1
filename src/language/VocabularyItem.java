@@ -16,7 +16,8 @@ public class VocabularyItem {
     public VocabularyItem() {
 
     }
-
+    
+    //Vocabulary item constructor
     public VocabularyItem(String word, String translation) {
         setWord(word);
         setTranslation(translation);

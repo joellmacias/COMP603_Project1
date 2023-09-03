@@ -19,16 +19,20 @@ public class Quiz extends LanguageMode {
     private User user;
     private int questions;
 
+    //Quiz constructor using super taking in the language, currentuser and the number
+    // of questions the quiz will have
     public Quiz(Language language, User user, int questions) {
         super(language, user);
         setQuestions(questions);
-
     }
 
     public void setQuestions(int questions) {
         this.questions = questions;
     }
 
+    //Generates multiple choice questions using the abstract method
+    // getRandomVocabularyItem and then checks using a loop if each choice
+    // is unique
     public List<VocabularyItem> generateMultipleChoices(VocabularyItem answer) {
         List<VocabularyItem> choices = new ArrayList<>();
         choices.add(answer);
@@ -57,10 +61,13 @@ public class Quiz extends LanguageMode {
         displayInstructions();
         Scanner scan = new Scanner(System.in);
         int score = 0;
+        //Each iteration is one question, generating new choices and each answer
+        // every time, 
         for (int i = 1; i <= questions; i++) {
             VocabularyItem answer = getRandomVocabularyItem();
             List<VocabularyItem> choices = generateMultipleChoices(answer);
-
+            
+            //Asks the question and presents the multiple choice questions
             while (true) {
                 System.out.println("\nQuestion " + i + ": What is the translation of " + answer.getWord() + "?");
                 for (int j = 0; j < choices.size(); j++) {
@@ -72,10 +79,10 @@ public class Quiz extends LanguageMode {
                 if ("x".equalsIgnoreCase(userChoice)) {
                     endMode();
                     return;
-
                 }
                 try {
-
+                    //checks if the answer is correct and if not presents the
+                    //correct answer
                     int userChoiceInt = Integer.parseInt(userChoice);
                     if (userChoiceInt <= choices.size() && userChoiceInt > 0) {
                         if (choices.get(userChoiceInt - 1).getWord().equalsIgnoreCase(answer.getWord())) {
@@ -94,6 +101,7 @@ public class Quiz extends LanguageMode {
                 }
             }
         }
+        //Prints the score and then checks if the score needs to be saved
         System.out.println("Your score was: " + score + "/20. Thanks for playing!");
 
         if (getUser().getScore() == 0) {
@@ -110,6 +118,7 @@ public class Quiz extends LanguageMode {
         endMode();
     }
 
+    //Display instructions for the quiz
     @Override
     public void displayInstructions() {
         System.out.println("\nQuiz mode:");
