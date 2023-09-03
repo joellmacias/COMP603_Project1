@@ -16,12 +16,13 @@ public class User implements Comparable<User>{
         
     }
     
+    //user constructor taking only the username as a parameter
     public User(String username)
     {
         setUsername(username);
         setScore(0);
     }
-    
+    //user constructor, taking in an int parameter
     public User(String username, int score)
     {
         setUsername(username);
@@ -48,6 +49,7 @@ public class User implements Comparable<User>{
         return this.score;
     }
     
+    //increaes the score by a value of int
     public void increaseScore(int value)
     {
         if (score > 0)
@@ -56,6 +58,7 @@ public class User implements Comparable<User>{
         }
     }
 
+    //compare function for integer using score to see which is higher
     @Override
     public int compareTo(User other) {
         return Integer.compare(this.score, other.score);

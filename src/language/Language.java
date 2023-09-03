@@ -17,6 +17,7 @@ public class Language {
     private String filePath;
     private List<VocabularyItem> vocabularyItemList;
     
+    //Language constructor
     public Language(String name, String filePath) {
         setName(name);
         setFilePath(filePath);

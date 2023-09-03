@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author joellmacias
  */
 public class LanguageSelector {
-
+    //Select language method with print to choose which language you want to use
     public Language selectLanguage() {
         Scanner scan = new Scanner(System.in);
         String input;

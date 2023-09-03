@@ -47,6 +47,7 @@ public class Flashcards extends LanguageMode {
         }
     }
 
+    //Display instructions for this mode
     @Override
     public void displayInstructions() {
         System.out.println("\nFlashcards:");
