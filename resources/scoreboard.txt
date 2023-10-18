@@ -7,6 +7,7 @@ Bishop 12
 Jared 9
 J 8
 Sue 8
+q 7
 james 6
 Josh 5
 Jason 4
