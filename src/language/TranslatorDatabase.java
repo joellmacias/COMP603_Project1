@@ -10,9 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Statement;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 
 /**
  *
@@ -72,8 +70,7 @@ public class TranslatorDatabase
             } 
             catch (SQLException ex) 
             {
-               // Logger.getLogger(TranslatorDatabase.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println(ex.getMessage());
+                Logger.getLogger(TranslatorDatabase.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
@@ -102,27 +99,14 @@ public class TranslatorDatabase
         }
         catch (SQLException e)
         {
-            e.printStackTrace();
-        }
-    }
-    
-    public void readLanguage(String language)
-    {
-        try
-        {
-            String sql = "SELECT * FROM table WHERE language = ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, language);
-            ResultSet resultSet = statement.executeQuery();
-            
-            while (resultSet.next())
+            if(e.getSQLState().equals("X0Y32"))
             {
-                String data = resultSet.getString("data_column");
+                System.out.println("Table already exists");
             }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
+            else
+            {
+                e.printStackTrace();
+            }
         }
     }
     
@@ -150,6 +134,51 @@ public class TranslatorDatabase
             {
                 e.printStackTrace();
             }
+        }
+    }
+    
+    public void updateDatabase(String sql)
+    {
+        Connection connection = this.conn;
+        Statement statement;
+        
+        try 
+        {
+            statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void updateUser(String name, int score)
+    {
+        try
+        {
+            if ()
+            {
+                String updateSQL = "UPDATE USERS SCORE = '" + score +
+                        "'WHERE NAME = '" + name + "'AND SCORE = '" + score + "'";
+                
+                updateDatabase(updateSQL);
+                
+                System.out.println("User data successfully updated.");
+            }
+            else
+            {
+                String insertSQL = "INSERT INTO USERS (NAME, SCORE) VALUES ('" +
+                        name + "', " + score + ")";
+                
+                updateDatabase(insertSQL);
+                
+                System.out.println("User created, data successfully inserted.");
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
         }
     }
     
