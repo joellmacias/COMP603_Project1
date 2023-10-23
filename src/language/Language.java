@@ -18,9 +18,10 @@ public class Language {
     private List<VocabularyItem> vocabularyItemList;
     
     //Language constructor
+    // change to Databse instead of filepath
     public Language(String name, String filePath) {
         setName(name);
-        setFilePath(filePath);
+     
         vocabularyItemList = new ArrayList<>();
     }
 
@@ -32,14 +33,6 @@ public class Language {
         this.name = name;
     }
 
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-    
     public void setVocabularyItemList(List<VocabularyItem> vocabList)
     {
         this.vocabularyItemList = vocabList;
