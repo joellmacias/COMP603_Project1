@@ -17,10 +17,12 @@ public class MenuInterface extends javax.swing.JFrame {
      */
     
     private User user;
+    private Language language;
     
-    public MenuInterface(User user) {
+    public MenuInterface(User user, Language language) {
         initComponents();
         this.user = user;
+        this.language = language;
     }
     public MenuInterface() {
         initComponents();
