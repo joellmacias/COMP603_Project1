@@ -15,6 +15,13 @@ public class MenuInterface extends javax.swing.JFrame {
     /**
      * Creates new form MenuInterface
      */
+    
+    private User user;
+    
+    public MenuInterface(User user) {
+        initComponents();
+        this.user = user;
+    }
     public MenuInterface() {
         initComponents();
     }
@@ -200,7 +207,7 @@ public class MenuInterface extends javax.swing.JFrame {
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to go back to Language Selection?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            new LanguageSelectorInterface().setVisible(true);
+            new LanguageSelectorInterface(user).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_returnButtonActionPerformed

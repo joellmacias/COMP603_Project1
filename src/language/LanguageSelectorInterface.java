@@ -16,11 +16,12 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
      * Creates new form LanguageSelectorInterface
      */
     private User user;
-            
+
     public LanguageSelectorInterface(User user) {
         this.user = user;
         initComponents();
     }
+
     public LanguageSelectorInterface() {
         initComponents();
     }
@@ -162,30 +163,33 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void spanishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spanishButtonActionPerformed
-        new MenuInterface().setVisible(true);
-          this.dispose();
+        Language spanish = new Language("SPANISH");
+        new MenuInterface(user).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_spanishButtonActionPerformed
 
     private void samoanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samoanButtonActionPerformed
-        new MenuInterface().setVisible(true);
-          this.dispose();
+        Language samoan = new Language("SAMOAN");
+        new MenuInterface(user).setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_samoanButtonActionPerformed
 
     private void maoriButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maoriButtonActionPerformed
-        new MenuInterface().setVisible(true);
+        Language maori = new Language("MAORI");
+        new MenuInterface(user).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_maoriButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
- if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
-    public void showUser()
-    {
-        userName.setText("Welcome "+user.getUsername()+"!");
+    public void showUser() {
+        userName.setText("Welcome " + user.getUsername() + "!");
     }
+
     /**
      * @param args the command line arguments
      */
