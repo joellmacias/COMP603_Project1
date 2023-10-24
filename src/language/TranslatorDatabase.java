@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Statement;
+import java.sql.ResultSet;
 
 
 /**
@@ -80,17 +81,20 @@ public class TranslatorDatabase
         try (Statement statement = conn.createStatement())
         {
             String createTableSpannish = "CREATE TABLE SPANNISH(" +
-                    "WORD VARCHAR(255)" +
+                    "ENGLISHWORD VARCHAR(20) NOT NULL," +
+                    "TRANSLATEDWORD VARCHAR(20) NOT NULL" +
                     ")";
             statement.executeUpdate(createTableSpannish);
             
             String createTableSamoan = "CREATE TABLE SAMOAN(" +
-                    "WORD VARCHAR(255)" +
+                    "ENGLISHWORD VARCHAR(20) NOT NULL," +
+                    "TRANSLATEDWORD VARCHAR(20) NOT NULL" +
                     ")";
             statement.executeUpdate(createTableSamoan);
             
             String createTableMaori = "CREATE TABLE MAORI(" +
-                    "WORD VARCHAR(255)" +
+                    "ENGLISHWORD VARCHAR(20) NOT NULL," +
+                    "TRANSLATEDWORD VARCHAR(20) NOT NULL" +
                     ")";
             statement.executeUpdate(createTableMaori);
             
@@ -157,10 +161,18 @@ public class TranslatorDatabase
     {
         try
         {
-            if ()
+            String selectSQL = "SELECT * FROM USERS WHERE NAME = '" + name +
+                    "' AND SCORE = '" + score +
+                    "'";
+            
+            ResultSet resultSet = Querry(selectSQL);
+            
+            if (resultSet.next())
             {
                 String updateSQL = "UPDATE USERS SCORE = '" + score +
-                        "'WHERE NAME = '" + name + "'AND SCORE = '" + score + "'";
+                        "'WHERE NAME = '" + name + 
+                        "'AND SCORE = '" + score + 
+                        "'";
                 
                 updateDatabase(updateSQL);
                 
@@ -169,7 +181,8 @@ public class TranslatorDatabase
             else
             {
                 String insertSQL = "INSERT INTO USERS (NAME, SCORE) VALUES ('" +
-                        name + "', " + score + ")";
+                        name + "', " + score + 
+                        ")";
                 
                 updateDatabase(insertSQL);
                 
@@ -182,7 +195,22 @@ public class TranslatorDatabase
         }
     }
     
-    
-    
+    public ResultSet Querry(String sql)
+    {
+        Connection connection = this.conn;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        
+        try
+        {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return resultSet;
+    }
     
 }
