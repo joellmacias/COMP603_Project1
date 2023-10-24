@@ -6,6 +6,10 @@ package language;
 
 import javax.swing.JOptionPane;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,17 +24,16 @@ public class MenuInterface extends javax.swing.JFrame {
     
     private User user;
     private Language language;
-    private TranslatorDatabase database;
     
     private static final String USER_NAME = "game";
     private static final String PASSWORD = "game";
     private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
     
-    public MenuInterface(User user, Language language, TranslatorDatabase database) {
+    public MenuInterface(User user, Language language) {
         initComponents();
         this.user = user;
         this.language = language;
-        this.database = database;
+      loadLanguage();
     }
     public MenuInterface() {
         initComponents();
@@ -236,17 +239,23 @@ public class MenuInterface extends javax.swing.JFrame {
     //Loads the Language Vocabulary Item list from the Database.
     public void loadLanguage()
     {
-        List<VocabularyItem> vocabularyItems = database.loadLanguageFromDatabase(language);
-        
-        if (vocabularyItems != null && !vocabularyItems.isEmpty())
-        {
-            language.setVocabularyItemList(vocabularyItems);
-            System.out.println("Language vocabulary items loaded successfully");
+         ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
+        try {
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            String query = "SELECT ENGLISHWORD, TRANSLATEDWORD FROM " + language.getName();
+            ResultSet resultSet = statement.executeQuery(query); 
+
+            while (resultSet.next()) {
+                String word = resultSet.getString("ENGLISHWORD");
+                String translation = resultSet.getString("TRANSLATEDWORD");
+                languageVocabList.add(new VocabularyItem(word, translation));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else
-        {
-            System.out.println("Failed to load language vocabulary items");
-        }
+        language.setVocabularyItemList(languageVocabList);
+        System.out.println(languageVocabList.get(1).getTranslation());
     }
     /**
      * @param args the command line arguments

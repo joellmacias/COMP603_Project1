@@ -188,4 +188,5 @@ public class TranslatorDatabase {
         }
         return languageVocabList;
     }
+    
 }
