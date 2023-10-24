@@ -225,6 +225,11 @@ public class MenuInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    //Loads the Language Vocabulary Item list from the Database.
+    public void loadLanguage()
+    {
+        
+    }
     /**
      * @param args the command line arguments
      */

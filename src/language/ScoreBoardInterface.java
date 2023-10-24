@@ -135,7 +135,6 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
             new MenuInterface().setVisible(true);
             this.dispose();
-        
     }//GEN-LAST:event_returnButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
