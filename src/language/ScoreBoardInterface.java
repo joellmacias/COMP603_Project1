@@ -15,6 +15,15 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
     /**
      * Creates new form ScoreBoardInterface
      */
+    private User user;
+    private Language language;
+    
+    public ScoreBoardInterface(User user,Language language) {
+        this.language = language;
+        this.user = user;
+        initComponents();
+    }
+    
     public ScoreBoardInterface() {
         initComponents();
     }
@@ -133,8 +142,9 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
-            new MenuInterface().setVisible(true);
+            new MenuInterface(user, language).setVisible(true);
             this.dispose();
+        
     }//GEN-LAST:event_returnButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed

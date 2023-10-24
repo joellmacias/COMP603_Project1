@@ -192,18 +192,18 @@ public class MenuInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
-        new QuizInterface().setVisible(true);
+        new QuizInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_quizButtonActionPerformed
 
     private void scoreboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreboardButtonActionPerformed
-        new ScoreBoardInterface().setVisible(true);
+        new ScoreBoardInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_scoreboardButtonActionPerformed
 
     private void flashcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flashcardsButtonActionPerformed
         // TODO add your handling code here:
-        new FlashcardInterface().setVisible(true);
+        new FlashcardInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_flashcardsButtonActionPerformed
 
@@ -215,7 +215,7 @@ public class MenuInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_returnButtonActionPerformed
 
     private void instructionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructionsButtonActionPerformed
-        new InstructionsInterface().setVisible(true);
+        new InstructionsInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_instructionsButtonActionPerformed
 
