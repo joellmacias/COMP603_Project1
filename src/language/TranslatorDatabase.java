@@ -175,7 +175,7 @@ public class TranslatorDatabase {
         try {
             Connection connection = this.conn;
             Statement statement = conn.createStatement();
-            String query = "SELECT ENGLISHWORD, TRANSLATEDWORD FROM "+language.getName();
+            String query = "SELECT ENGLISHWORD, TRANSLATEDWORD FROM " + language.getName();
             ResultSet resultSet = statement.executeQuery(query); 
 
             while (resultSet.next()) {
