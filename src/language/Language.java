@@ -14,14 +14,12 @@ import java.util.List;
 public class Language {
 
     private String name;
-    private String filePath;
     private List<VocabularyItem> vocabularyItemList;
     
     //Language constructor
     // change to Databse instead of filepath
-    public Language(String name, String filePath) {
+    public Language(String name) {
         setName(name);
-     
         vocabularyItemList = new ArrayList<>();
     }
 
