@@ -164,19 +164,19 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
 
     private void spanishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spanishButtonActionPerformed
         Language spanish = new Language("SPANISH");
-        new MenuInterface(user).setVisible(true);
+        new MenuInterface(user, spanish).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_spanishButtonActionPerformed
 
     private void samoanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samoanButtonActionPerformed
         Language samoan = new Language("SAMOAN");
-        new MenuInterface(user).setVisible(true);
+        new MenuInterface(user, samoan).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_samoanButtonActionPerformed
 
     private void maoriButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maoriButtonActionPerformed
         Language maori = new Language("MAORI");
-        new MenuInterface(user).setVisible(true);
+        new MenuInterface(user, maori).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_maoriButtonActionPerformed
 
