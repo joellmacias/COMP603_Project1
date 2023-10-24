@@ -24,9 +24,9 @@ public class FlashcardInterface extends javax.swing.JFrame {
         this.language = language;
         initComponents();
 
-        //currentFlashcard = language.getRandomVocabularyItem();
-        //englishLabel.setText(currentFlashcard.getWord());
-        englishLabel.setText("TEST");
+        currentFlashcard = language.getRandomVocabularyItem();
+        englishLabel.setText(currentFlashcard.getWord());
+
     }
 
     public FlashcardInterface() {
@@ -179,22 +179,19 @@ public class FlashcardInterface extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
 
-        //currentFlashcard = language.getRandomVocabularyItem();
+        currentFlashcard = language.getRandomVocabularyItem();
 
-        //englishLabel.setText(currentFlashcard.getWord());
-        //            targetLabel.setText(currentFlashcard.getTranslation());
-                englishLabel.setText("AHHHH");
+        englishLabel.setText(currentFlashcard.getWord());
         targetLabel.setText("");
 
 
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void revealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revealButtonActionPerformed
-//        if (currentFlashcard!= null)
-//        {
-//            targetLabel.setText(currentFlashcard.getTranslation());
-//        }
-        targetLabel.setText("REVEAL");
+        if (currentFlashcard!= null)
+        {
+            targetLabel.setText(currentFlashcard.getTranslation());
+        }
     }//GEN-LAST:event_revealButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed

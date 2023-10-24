@@ -4,6 +4,11 @@
  */
 package language;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +21,9 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
      * Creates new form LanguageSelectorInterface
      */
     private User user;
+    private static final String USER_NAME = "game";
+    private static final String PASSWORD = "game";
+    private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
 
     public LanguageSelectorInterface(User user) {
         this.user = user;
@@ -163,19 +171,24 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void spanishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spanishButtonActionPerformed
-        Language spanish = new Language("SPANISH");
+        Language spanish = new Language("SPANNISH");
+        loadLanguage(spanish);
+
         new MenuInterface(user, spanish).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_spanishButtonActionPerformed
 
     private void samoanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samoanButtonActionPerformed
         Language samoan = new Language("SAMOAN");
+        loadLanguage(samoan);
         new MenuInterface(user, samoan).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_samoanButtonActionPerformed
 
     private void maoriButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maoriButtonActionPerformed
         Language maori = new Language("MAORI");
+        loadLanguage(maori);
+
         new MenuInterface(user, maori).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_maoriButtonActionPerformed
@@ -185,6 +198,27 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    //Loads the Language Vocabulary Item list from the Database.
+    public void loadLanguage(Language language) {
+        ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
+        try {
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            String query = "SELECT ENGLISHWORD, TRANSLATEDWORD FROM " + language.getName();
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String word = resultSet.getString("ENGLISHWORD");
+                String translation = resultSet.getString("TRANSLATEDWORD");
+                languageVocabList.add(new VocabularyItem(word, translation));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        language.setVocabularyItemList(languageVocabList);
+        System.out.println(languageVocabList.get(1).getTranslation());
+    }
 
     public void showUser() {
         userName.setText("Welcome " + user.getUsername() + "!");

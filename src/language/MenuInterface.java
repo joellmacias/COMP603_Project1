@@ -5,8 +5,7 @@
 package language;
 
 import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.util.List;
+
 
 /**
  *
@@ -20,17 +19,13 @@ public class MenuInterface extends javax.swing.JFrame {
     
     private User user;
     private Language language;
-    private TranslatorDatabase database;
     
-    private static final String USER_NAME = "game";
-    private static final String PASSWORD = "game";
-    private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
+
     
-    public MenuInterface(User user, Language language, TranslatorDatabase database) {
+    public MenuInterface(User user, Language language) {
         initComponents();
         this.user = user;
         this.language = language;
-        this.database = database;
     }
     public MenuInterface() {
         initComponents();
@@ -233,21 +228,7 @@ public class MenuInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
-    //Loads the Language Vocabulary Item list from the Database.
-    public void loadLanguage()
-    {
-        List<VocabularyItem> vocabularyItems = database.loadLanguageFromDatabase(language);
-        
-        if (vocabularyItems != null && !vocabularyItems.isEmpty())
-        {
-            language.setVocabularyItemList(vocabularyItems);
-            System.out.println("Language vocabulary items loaded successfully");
-        }
-        else
-        {
-            System.out.println("Failed to load language vocabulary items");
-        }
-    }
+   
     /**
      * @param args the command line arguments
      */
