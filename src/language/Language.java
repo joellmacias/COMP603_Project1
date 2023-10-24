@@ -6,6 +6,7 @@ package language;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
@@ -39,5 +40,10 @@ public class Language {
     public List<VocabularyItem> getVocabularyItemList()
     {
         return vocabularyItemList;
+    }
+    public VocabularyItem getRandomVocabularyItem() {
+        Random random = new Random();
+        int randomIndex = random.nextInt(getVocabularyItemList().size());
+        return getVocabularyItemList().get(randomIndex);
     }
 }

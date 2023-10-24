@@ -4,6 +4,9 @@
  */
 package language;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,9 +19,11 @@ public class QuizInterface extends javax.swing.JFrame {
      * Creates new form QuizInterface
      */
     private User user;
+    private Language language;
     
-    public QuizInterface(User user)
+    public QuizInterface(User user, Language language)
     {
+        this.language = language;
         this.user = user;
         initComponents();
     }
@@ -207,6 +212,30 @@ public class QuizInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    
+    public List<VocabularyItem> generateMultipleChoices(VocabularyItem answer) {
+        List<VocabularyItem> choices = new ArrayList<>();
+        choices.add(answer);
+
+        while (choices.size() < 4) {
+            VocabularyItem randomVocab = language.getRandomVocabularyItem();
+            boolean unique = true;
+            for (VocabularyItem existingChoice : choices) {
+                if (existingChoice.getWord().equalsIgnoreCase(randomVocab.getWord())) {
+                    unique = false;
+                    break;
+                }
+            }
+
+            if (unique) {
+                choices.add(randomVocab);
+            }
+
+        }
+        Collections.shuffle(choices);
+        return choices;
+    }
+    
     /**
      * @param args the command line arguments
      */

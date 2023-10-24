@@ -12,9 +12,17 @@ import javax.swing.JOptionPane;
  */
 public class FlashcardInterface extends javax.swing.JFrame {
 
+    private User user;
+    private Language language;
     /**
      * Creates new form FlashcardInterface
      */
+    public FlashcardInterface(User user, Language language)
+    {
+        this.user = user;
+        this.language = language;
+        initComponents();
+    }
     public FlashcardInterface() {
         initComponents();
     }
@@ -166,7 +174,7 @@ public class FlashcardInterface extends javax.swing.JFrame {
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to go back to Menu?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            new MenuInterface().setVisible(true);
+            new MenuInterface(user, language).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_returnButtonActionPerformed
