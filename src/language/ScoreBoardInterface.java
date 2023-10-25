@@ -240,46 +240,21 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
                 String name = resultSet.getString("NAME");
                 int score = resultSet.getInt("SCORE");
 
-                if (rank == 1) 
-                {
-                    jLabel3.setText(rank + ": " + name + " - " + score);
-                } 
-                else if (rank == 2) 
-                {
-                    jLabel4.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 3) 
-                {
-                    jLabel5.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 4) 
-                {
-                    jLabel6.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 5) 
-                {
-                    jLabel7.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 6) 
-                {
-                    jLabel8.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 7) 
-                {
-                    jLabel9.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 8) 
-                {
-                    jLabel10.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 9) 
-                {
-                    jLabel11.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 10) 
-                {
-                    jLabel12.setText(rank + ": " + name + " - " + score);
-                }
+                String labelText = rank + ": " + name + " - " + score;
+                
+               switch (rank) 
+               {
+                  case 1: jLabel3.setText(labelText); break;
+                  case 2: jLabel4.setText(labelText); break;
+                  case 3: jLabel5.setText(labelText); break;
+                  case 4: jLabel6.setText(labelText); break;
+                   case 5: jLabel7.setText(labelText); break;
+                   case 6: jLabel8.setText(labelText); break;
+                  case 7: jLabel9.setText(labelText); break;
+                  case 8: jLabel10.setText(labelText); break;
+                  case 9: jLabel11.setText(labelText); break;
+                  case 10: jLabel12.setText(labelText); break;
+               }
                rank++;
             }
         } 
