@@ -189,4 +189,18 @@ public class TranslatorDatabase {
         return languageVocabList;
     }
     
+    public ResultSet getHighestScores()
+    {
+        try
+        {
+            String query = "SELECT NAME, SCORE FROM USERS ORDER BY SCORE DESC LIMIT 10";
+            return Querry(query);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
 }
