@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package language;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
@@ -17,6 +22,10 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
      */
     private User user;
     private Language language;
+    private int rank;
+    private static final String USER_NAME = "game";
+    private static final String PASSWORD = "game";
+    private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
     
     public ScoreBoardInterface(User user,Language language) {
         this.language = language;
@@ -141,6 +150,39 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt)
+    {
+        
+        try
+        {
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            TranslatorDatabase translatorDB = new TranslatorDatabase();
+            
+            ResultSet resultSet = translatorDB.getHighestScores();
+            rank = 1;
+            
+            while(resultSet.next() && rank <= 10)
+            {
+                String name = resultSet.getString("NAME");
+                int score = resultSet.getInt("SCORE");
+                
+                if (rank == 1)
+                {
+                    jLabel3.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 2)
+                {
+                    jLabel4.setText(rank + ": " + name + " - " + score);
+                }
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
             new MenuInterface(user, language).setVisible(true);
             this.dispose();
