@@ -6,7 +6,9 @@ package language;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Enumeration;
 import java.util.List;
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -138,6 +140,11 @@ public class QuizInterface extends javax.swing.JFrame {
         questionLabel.setText("questionLabel");
 
         submitButton.setText("Submit");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -209,7 +216,7 @@ public class QuizInterface extends javax.swing.JFrame {
 
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to go back to Menu?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            new MenuInterface().setVisible(true);
+            new MenuInterface(user, language).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_returnButtonActionPerformed
@@ -220,17 +227,34 @@ public class QuizInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
-     public void showQuestion()
-    {
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+        // TODO add your handling code here:
+        System.out.println("1");
+        if (buttonGroup1.getSelection() == null) {
+            JOptionPane.showMessageDialog(this, "Please select an answer.", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            for (Enumeration<AbstractButton> buttons = buttonGroup1.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    System.out.println(button.getText() + " is selected");
+                }
+            }
+            
+            
+            
+        }
+    }//GEN-LAST:event_submitButtonActionPerformed
+
+    public void showQuestion() {
         VocabularyItem answer = language.getRandomVocabularyItem();
         List<VocabularyItem> questions = generateMultipleChoices(answer);
-        questionLabel.setText("Question" +(iteration+1)+": What is the translation of "+answer.getWord()+"?");
-        jRadioButton1.setText("1: "+questions.get(0).getTranslation());
-        jRadioButton2.setText("2: "+questions.get(1).getTranslation());
-        jRadioButton3.setText("3: "+questions.get(2).getTranslation());
-        jRadioButton4.setText("4: "+questions.get(3).getTranslation());
+        questionLabel.setText("Question" + (iteration + 1) + ": What is the translation of " + answer.getWord() + "?");
+        jRadioButton1.setText("1: " + questions.get(0).getTranslation());
+        jRadioButton2.setText("2: " + questions.get(1).getTranslation());
+        jRadioButton3.setText("3: " + questions.get(2).getTranslation());
+        jRadioButton4.setText("4: " + questions.get(3).getTranslation());
     }
-     
+
     public List<VocabularyItem> generateMultipleChoices(VocabularyItem answer) {
         List<VocabularyItem> choices = new ArrayList<>();
         choices.add(answer);
@@ -253,7 +277,7 @@ public class QuizInterface extends javax.swing.JFrame {
         Collections.shuffle(choices);
         return choices;
     }
-    
+
     /**
      * @param args the command line arguments
      */

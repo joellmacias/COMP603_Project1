@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package language;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -26,13 +27,13 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
     private static final String USER_NAME = "game";
     private static final String PASSWORD = "game";
     private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
-    
-    public ScoreBoardInterface(User user,Language language) {
+
+    public ScoreBoardInterface(User user, Language language) {
         this.language = language;
         this.user = user;
         initComponents();
     }
-    
+
     public ScoreBoardInterface() {
         initComponents();
     }
@@ -54,6 +55,7 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        updateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +108,13 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
 
         jLabel4.setText("2:");
 
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -117,6 +126,8 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(returnButton))
+                .addGap(158, 158, 158)
+                .addComponent(updateButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addContainerGap())
@@ -126,13 +137,18 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(exitButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(returnButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(exitButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(returnButton, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(updateButton)))
                 .addContainerGap())
         );
 
@@ -150,43 +166,10 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt)
-    {
-        
-        try
-        {
-            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-            Statement statement = connection.createStatement();
-            TranslatorDatabase translatorDB = new TranslatorDatabase();
-            
-            ResultSet resultSet = translatorDB.getHighestScores();
-            rank = 1;
-            
-            while(resultSet.next() && rank <= 10)
-            {
-                String name = resultSet.getString("NAME");
-                int score = resultSet.getInt("SCORE");
-                
-                if (rank == 1)
-                {
-                    jLabel3.setText(rank + ": " + name + " - " + score);
-                }
-                else if (rank == 2)
-                {
-                    jLabel4.setText(rank + ": " + name + " - " + score);
-                }
-            }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-    }
-    
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
-            new MenuInterface(user, language).setVisible(true);
-            this.dispose();
-        
+        new MenuInterface(user, language).setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_returnButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -194,6 +177,30 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        try {
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+            Statement statement = connection.createStatement();
+            TranslatorDatabase translatorDB = new TranslatorDatabase();
+
+            ResultSet resultSet = translatorDB.getHighestScores();
+            rank = 1;
+
+            while (resultSet.next() && rank <= 10) {
+                String name = resultSet.getString("NAME");
+                int score = resultSet.getInt("SCORE");
+
+                if (rank == 1) {
+                    jLabel3.setText(rank + ": " + name + " - " + score);
+                } else if (rank == 2) {
+                    jLabel4.setText(rank + ": " + name + " - " + score);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,5 +246,6 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton returnButton;
+    private javax.swing.JButton updateButton;
     // End of variables declaration//GEN-END:variables
 }
