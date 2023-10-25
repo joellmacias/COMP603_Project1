@@ -193,8 +193,10 @@ public class TranslatorDatabase {
     {
         try
         {
-            String query = "SELECT NAME, SCORE FROM USERS ORDER BY SCORE DESC LIMIT 10";
-            return Querry(query);
+            Statement statement = conn.createStatement();
+            String query = "SELECT NAME, SCORE FROM USERS ORDER BY SCORE DESC FETCH FIRST 10 ROWS ONLY";
+            
+            return statement.executeQuery(query);
         }
         catch(Exception e)
         {

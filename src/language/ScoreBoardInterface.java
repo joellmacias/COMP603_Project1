@@ -56,6 +56,14 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         updateButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +123,22 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("3:");
+
+        jLabel6.setText("4:");
+
+        jLabel7.setText("5:");
+
+        jLabel8.setText("6:");
+
+        jLabel9.setText("7:");
+
+        jLabel10.setText("8:");
+
+        jLabel11.setText("9:");
+
+        jLabel12.setText("10:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -123,11 +147,20 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(returnButton))
                 .addGap(158, 158, 158)
-                .addComponent(updateButton)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(updateButton)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel12))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(exitButton)
                 .addContainerGap())
@@ -139,10 +172,26 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(exitButton, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(returnButton, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -180,24 +229,62 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         try {
-            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
-            Statement statement = connection.createStatement();
             TranslatorDatabase translatorDB = new TranslatorDatabase();
+            Connection connection = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
 
             ResultSet resultSet = translatorDB.getHighestScores();
             rank = 1;
 
-            while (resultSet.next() && rank <= 10) {
+            while (resultSet.next() && rank <= 10) 
+            {
                 String name = resultSet.getString("NAME");
                 int score = resultSet.getInt("SCORE");
 
-                if (rank == 1) {
+                if (rank == 1) 
+                {
                     jLabel3.setText(rank + ": " + name + " - " + score);
-                } else if (rank == 2) {
+                } 
+                else if (rank == 2) 
+                {
                     jLabel4.setText(rank + ": " + name + " - " + score);
                 }
+                else if (rank == 3) 
+                {
+                    jLabel5.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 4) 
+                {
+                    jLabel6.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 5) 
+                {
+                    jLabel7.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 6) 
+                {
+                    jLabel8.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 7) 
+                {
+                    jLabel9.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 8) 
+                {
+                    jLabel10.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 9) 
+                {
+                    jLabel11.setText(rank + ": " + name + " - " + score);
+                }
+                else if (rank == 10) 
+                {
+                    jLabel12.setText(rank + ": " + name + " - " + score);
+                }
+               rank++;
             }
-        } catch (SQLException e) {
+        } 
+        catch (SQLException e) 
+        {
             e.printStackTrace();
         }
     }//GEN-LAST:event_updateButtonActionPerformed
@@ -240,9 +327,17 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton exitButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton returnButton;
