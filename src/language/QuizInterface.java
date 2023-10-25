@@ -9,7 +9,9 @@ import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
 import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 
 /**
  *
@@ -23,13 +25,16 @@ public class QuizInterface extends javax.swing.JFrame {
     private User user;
     private Language language;
     private int score;
-    private int iteration;
+    private int currentQuestion;
+    private JRadioButton selectedRadioButton;
+    private String userAnswer;
+    private VocabularyItem answer;
 
     public QuizInterface(User user, Language language) {
         this.language = language;
         this.user = user;
         this.score = 0;
-        this.iteration = 0;
+        this.currentQuestion = 0;
         initComponents();
         showQuestion();
     }
@@ -121,22 +126,22 @@ public class QuizInterface extends javax.swing.JFrame {
         });
 
         buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        jRadioButton1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jRadioButton1.setText("jRadioButton1");
 
         buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jRadioButton2.setText("jRadioButton1");
+        jRadioButton2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jRadioButton2.setText("jRadioButton2");
 
         buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jRadioButton3.setText("jRadioButton1");
+        jRadioButton3.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jRadioButton3.setText("jRadioButton3");
 
         buttonGroup1.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        jRadioButton4.setText("jRadioButton1");
+        jRadioButton4.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
+        jRadioButton4.setText("jRadioButton4");
 
-        questionLabel.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        questionLabel.setFont(new java.awt.Font("SansSerif", 1, 22)); // NOI18N
         questionLabel.setText("questionLabel");
 
         submitButton.setText("Submit");
@@ -170,7 +175,7 @@ public class QuizInterface extends javax.swing.JFrame {
                     .addComponent(jRadioButton4))
                 .addGap(80, 80, 80))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addContainerGap()
                 .addComponent(questionLabel)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -178,13 +183,13 @@ public class QuizInterface extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(questionLabel)
-                .addGap(70, 70, 70)
+                .addGap(52, 52, 52)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
                     .addComponent(jRadioButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton4))
@@ -236,19 +241,36 @@ public class QuizInterface extends javax.swing.JFrame {
             for (Enumeration<AbstractButton> buttons = buttonGroup1.getElements(); buttons.hasMoreElements();) {
                 AbstractButton button = buttons.nextElement();
                 if (button.isSelected()) {
-                    System.out.println(button.getText() + " is selected");
+                    userAnswer = button.getText();
+
                 }
+
             }
-            
-            
-            
+            String userAnswerProper = userAnswer.substring(3);
+            if (userAnswerProper.equals(answer.getTranslation())) {
+                JOptionPane.showMessageDialog(this, "Correct answer!");
+                score++;
+            } else {
+                JOptionPane.showMessageDialog(this, "Wrong answer! The correct answer is " + answer.getTranslation() + ".");
+
+            }
+            currentQuestion++;
+            if (currentQuestion < 2) {
+                showQuestion();
+                buttonGroup1.clearSelection();
+            } else {
+                JOptionPane.showMessageDialog(this, "You have finished the quiz!");
+                user.setScore(score);
+                new ResultsInterface(user, language).setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     public void showQuestion() {
-        VocabularyItem answer = language.getRandomVocabularyItem();
+        answer = language.getRandomVocabularyItem();
         List<VocabularyItem> questions = generateMultipleChoices(answer);
-        questionLabel.setText("Question" + (iteration + 1) + ": What is the translation of " + answer.getWord() + "?");
+        questionLabel.setText("Question " + (currentQuestion + 1) + ": What is the translation of " + answer.getWord() + "?");
         jRadioButton1.setText("1: " + questions.get(0).getTranslation());
         jRadioButton2.setText("2: " + questions.get(1).getTranslation());
         jRadioButton3.setText("3: " + questions.get(2).getTranslation());
