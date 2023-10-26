@@ -4,6 +4,9 @@
  */
 package language;
 
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,6 +20,9 @@ public class ResultsInterface extends javax.swing.JFrame {
      */
     private User user;
     private Language language;
+    private static final String USER_NAME = "game";
+    private static final String PASSWORD = "game";
+    private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
 
     public ResultsInterface(User user, Language language) {
         this.user = user;
@@ -161,7 +167,19 @@ public class ResultsInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void updateScoreboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateScoreboardActionPerformed
-        // TODO add your handling code here:
+        String name = user.getUsername();
+        int score = user.getScore();
+        try
+        {
+           TranslatorDatabase translatorDB = new TranslatorDatabase();
+           translatorDB.updateUser(name, score);
+           JOptionPane.showMessageDialog(this, "Score updated successfully!");
+        }
+        catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(this, "Error updating score: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_updateScoreboardActionPerformed
     public void showCongrats() {
         congratsLabel.setText("Congrats " + user.getUsername() + "! Your score was "+user.getScore()+"!");

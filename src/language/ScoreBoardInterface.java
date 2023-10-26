@@ -248,8 +248,8 @@ public class ScoreBoardInterface extends javax.swing.JFrame {
                   case 2: jLabel4.setText(labelText); break;
                   case 3: jLabel5.setText(labelText); break;
                   case 4: jLabel6.setText(labelText); break;
-                   case 5: jLabel7.setText(labelText); break;
-                   case 6: jLabel8.setText(labelText); break;
+                  case 5: jLabel7.setText(labelText); break;
+                  case 6: jLabel8.setText(labelText); break;
                   case 7: jLabel9.setText(labelText); break;
                   case 8: jLabel10.setText(labelText); break;
                   case 9: jLabel11.setText(labelText); break;
