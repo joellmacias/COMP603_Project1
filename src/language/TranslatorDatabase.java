@@ -32,11 +32,6 @@ public class TranslatorDatabase {
         createUserTable();
     }
 
-    public static void main(String[] args) {
-        TranslatorDatabase translatorDB = new TranslatorDatabase();
-        System.out.println(translatorDB.getConnection());
-    }
-
     public void establishConnection() {
         if (this.conn == null) {
             try {
@@ -112,14 +107,21 @@ public class TranslatorDatabase {
         }
     }
 
-    public void updateDatabase(String sql) {
+    public void updateDatabase(String sql) 
+    {
         Connection connection = this.conn;
         Statement statement;
 
-        try {
-            statement = connection.createStatement();
-            statement.executeUpdate(sql);
-        } catch (Exception e) {
+        try 
+        {
+            if (sql != null && !sql.isEmpty())
+            {
+                statement = connection.createStatement();
+                statement.executeUpdate(sql);
+            }
+        } 
+        catch (Exception e) 
+        {
             e.printStackTrace();
         }
     }
@@ -150,38 +152,60 @@ public class TranslatorDatabase {
         }
     }
 
-    public ResultSet Querry(String sql) {
-        Connection connection = this.conn;
-        Statement statement = null;
-        ResultSet resultSet = null;
+    public ResultSet Querry(String sql) 
+    {
+    Connection connection = this.conn;
+    Statement statement = null;
+    ResultSet resultSet = null;
 
-        try {
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(sql);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return resultSet;
+    if (sql == null || sql.isEmpty()) 
+    {
+        return null;
     }
 
-    public List<VocabularyItem> loadLanguageFromDatabase(Language language) {
-        ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
-        try {
+    try 
+    {
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(sql);
+    } 
+    catch (Exception e) 
+    {
+        e.printStackTrace();
+    }
+    return resultSet;
+}
+
+
+    public List<VocabularyItem> loadLanguageFromDatabase(Language language) 
+    {
+    ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
+    try 
+    {
+        if (language != null) 
+        {
             Connection connection = this.conn;
-            Statement statement = conn.createStatement();
-            String query = "SELECT ENGLISHWORD, TRANSLATEDWORD FROM " + language.getName();
-            ResultSet resultSet = statement.executeQuery(query); 
+            String tableName = language.getName();
+            String query = "SELECT ENGLISHWORD, TRANSLATEDWORD FROM " + tableName;
+            try (Statement statement = connection.createStatement()) 
+            {
+                ResultSet resultSet = statement.executeQuery(query);
 
-            while (resultSet.next()) {
-                String word = resultSet.getString("ENGLISHWORD");
-                String translation = resultSet.getString("TRANSLATEDWORD");
-                languageVocabList.add(new VocabularyItem(word, translation));
+                while (resultSet.next()) 
+                {
+                    String word = resultSet.getString("ENGLISHWORD");
+                    String translation = resultSet.getString("TRANSLATEDWORD");
+                    languageVocabList.add(new VocabularyItem(word, translation));
+                }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-        return languageVocabList;
+    } 
+    catch (Exception e) 
+    {
+        e.printStackTrace();
     }
+    return languageVocabList;
+}
+
     
     public ResultSet getHighestScores()
     {
