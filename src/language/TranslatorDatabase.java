@@ -124,33 +124,28 @@ public class TranslatorDatabase {
         }
     }
 
-    public void updateUser(String name, int score) {
-        try {
-            String selectSQL = "SELECT * FROM USERS WHERE NAME = '" + name
-                    + "' AND SCORE = '" + score
-                    + "'";
-
+    public void updateUser(String name, int score) 
+    {
+        try 
+        {
+            String selectSQL = "SELECT * FROM USERS WHERE NAME = '" + name + "'";
             ResultSet resultSet = Querry(selectSQL);
-
-            if (resultSet.next()) {
-                String updateSQL = "UPDATE USERS SCORE = '" + score
-                        + "'WHERE NAME = '" + name
-                        + "'AND SCORE = '" + score
-                        + "'";
-
+            
+            if (resultSet.next())
+            {
+                String updateSQL = "UPDATE USERS SET SCORE = " + score + " WHERE NAME = '" + name + "'";
                 updateDatabase(updateSQL);
-
                 System.out.println("User data successfully updated.");
-            } else {
-                String insertSQL = "INSERT INTO USERS (NAME, SCORE) VALUES ('"
-                        + name + "', " + score
-                        + ")";
-
+            }
+            else
+            {
+                String insertSQL = "INSERT INTO USERS (NAME, SCORE) VALUES ('" + name + "', " + score + ")";
                 updateDatabase(insertSQL);
-
                 System.out.println("User created, data successfully inserted.");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
