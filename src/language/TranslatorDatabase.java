@@ -35,7 +35,6 @@ public class TranslatorDatabase {
     public static void main(String[] args) {
         TranslatorDatabase translatorDB = new TranslatorDatabase();
         System.out.println(translatorDB.getConnection());
-
     }
 
     public void establishConnection() {
@@ -99,7 +98,7 @@ public class TranslatorDatabase {
             try (Statement statement = conn.createStatement()) {
                 String createTableSQL = "CREATE TABLE USERS("
                         + "NAME VARCHAR(15) NOT NULL, "
-                        + "SCORE VARCHAR(2) NOT NULL"
+                        + "SCORE INT NOT NULL"
                         + ")";
                 statement.executeUpdate(createTableSQL);
                 System.out.println("User Table successfully created");
