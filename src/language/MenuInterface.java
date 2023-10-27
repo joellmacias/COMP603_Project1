@@ -194,34 +194,35 @@ public class MenuInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //starts quiz if pressed
     private void quizButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizButtonActionPerformed
         new QuizInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_quizButtonActionPerformed
-
+    //starts scoreboard if pressed
     private void scoreboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scoreboardButtonActionPerformed
         new ScoreBoardInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_scoreboardButtonActionPerformed
-
+    //starts flashcard if pressed
     private void flashcardsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flashcardsButtonActionPerformed
         // TODO add your handling code here:
         new FlashcardInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_flashcardsButtonActionPerformed
-
+    //returns to language selection if pressed
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to go back to Language Selection?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             new LanguageSelectorInterface(user).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_returnButtonActionPerformed
-
+    //goes to instructions if pressed
     private void instructionsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructionsButtonActionPerformed
         new InstructionsInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_instructionsButtonActionPerformed
-
+    //closes app if pressed
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);

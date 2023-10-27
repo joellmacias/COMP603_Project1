@@ -9,7 +9,7 @@ package language;
  * @author joelmacias
  */
 public class LanguageVocabApplicationGUI {
-    
+    //starts program
     public static void main(String[] args) {
         new LoginInterface().setVisible(true);
     }

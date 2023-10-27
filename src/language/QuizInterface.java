@@ -218,20 +218,26 @@ public class QuizInterface extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    //returns if pressed
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to go back to Menu?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             new MenuInterface(user, language).setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_returnButtonActionPerformed
-
+    //exits program if pressed
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    //if submit is pressed, checks if an answer is selected. it then searches 
+    //through the radio buttons to find which is selected. once selected it 
+    //takes the string and compares it to the answer vocabulary item. if correct
+    // adds 1 to to score and if not does nothing. iterating currentQuestion by
+    //1 and ending when it reaches 20. sending users to the results page.
+    
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("1");
@@ -242,7 +248,6 @@ public class QuizInterface extends javax.swing.JFrame {
                 AbstractButton button = buttons.nextElement();
                 if (button.isSelected()) {
                     userAnswer = button.getText();
-
                 }
 
             }
@@ -255,7 +260,7 @@ public class QuizInterface extends javax.swing.JFrame {
 
             }
             currentQuestion++;
-            if (currentQuestion < 2) {
+            if (currentQuestion < 20) {
                 showQuestion();
                 buttonGroup1.clearSelection();
             } else {
@@ -267,6 +272,9 @@ public class QuizInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_submitButtonActionPerformed
 
+    //this sets the text in the GUI for the question and the options.
+    //sets answer to a random vocab item and calls generateMultipleChoices 
+    //function
     public void showQuestion() {
         answer = language.getRandomVocabularyItem();
         List<VocabularyItem> questions = generateMultipleChoices(answer);
@@ -277,6 +285,9 @@ public class QuizInterface extends javax.swing.JFrame {
         jRadioButton4.setText("4: " + questions.get(3).getTranslation());
     }
 
+    //this generates the questions for the quiz taking in the vocabulary item
+    //answer. it adds the answer to the choices and generates 3 unique new 
+    //vocabulary items. it then shuffles them and returns them
     public List<VocabularyItem> generateMultipleChoices(VocabularyItem answer) {
         List<VocabularyItem> choices = new ArrayList<>();
         choices.add(answer);
