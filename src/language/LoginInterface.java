@@ -150,21 +150,25 @@ public class LoginInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_firstNameTextFieldActionPerformed
 
+    //exits program if pressed
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    //if enter is pressed checks the text in the field
     private void enterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterButtonActionPerformed
         String firstName = firstNameTextField.getText();
         
+        //if its blank, sends error message
         if (firstName.isBlank())
         {
             JOptionPane.showMessageDialog(this, "Please fill in the First Name text field.", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
+        //if the text is in the correct letter field, continues to next interface
         if(firstName.matches("[a-zA-Z]+"))
         {
             User user = new User(firstName);
@@ -172,6 +176,7 @@ public class LoginInterface extends javax.swing.JFrame {
             this.dispose();
             
         }
+        //otherwise another warning is set if the letters arent correct.
         else
         {
             JOptionPane.showMessageDialog(this, "Please enter letters only!", "Warning", JOptionPane.WARNING_MESSAGE);

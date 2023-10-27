@@ -154,18 +154,19 @@ public class ResultsInterface extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    // return button to menu
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         new MenuInterface(user, language).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_returnButtonActionPerformed
-
+    //exits program if pressed
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    //this updates the database if user wishes to update the score. 
     private void updateScoreboardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateScoreboardActionPerformed
         String name = user.getUsername();
         int score = user.getScore();
@@ -181,6 +182,8 @@ public class ResultsInterface extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_updateScoreboardActionPerformed
+    
+    //this sets the text of the user for finishing the quiz.
     public void showCongrats() {
         congratsLabel.setText("Congrats " + user.getUsername() + "! Your score was "+user.getScore()+"!");
     }

@@ -25,6 +25,7 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
     private static final String PASSWORD = "game";
     private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
 
+    //constructor
     public LanguageSelectorInterface(User user) {
         this.user = user;
         initComponents();
@@ -170,6 +171,7 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //if spanish is clicked, initiate and load spanish vocab list.
     private void spanishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_spanishButtonActionPerformed
         Language spanish = new Language("SPANNISH");
         loadLanguage(spanish);
@@ -177,14 +179,14 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
         new MenuInterface(user, spanish).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_spanishButtonActionPerformed
-
+    //if Samoan is clicked, initiate and load samoan vocab list.
     private void samoanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samoanButtonActionPerformed
         Language samoan = new Language("SAMOAN");
         loadLanguage(samoan);
         new MenuInterface(user, samoan).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_samoanButtonActionPerformed
-
+    //if maori is clicked, initiate and load maori vocab list.
     private void maoriButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maoriButtonActionPerformed
         Language maori = new Language("MAORI");
         loadLanguage(maori);
@@ -192,7 +194,7 @@ public class LanguageSelectorInterface extends javax.swing.JFrame {
         new MenuInterface(user, maori).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_maoriButtonActionPerformed
-
+    //exits the program
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
