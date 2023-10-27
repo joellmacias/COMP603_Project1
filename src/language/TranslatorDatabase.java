@@ -19,19 +19,21 @@ import java.util.List;
  * @author Bishop
  */
 public class TranslatorDatabase {
-
+    //Database created inside assignment directory
+    //Username, Password and URL allow us to access the database.
     private static final String USER_NAME = "game";
     private static final String PASSWORD = "game";
     private static final String URL = "jdbc:derby:TranslatorDatabase;create=true";
-
     Connection conn;
-
+    
+    //Default constructor establishes the connection and creates the database tables.
     public TranslatorDatabase() {
         establishConnection();
         createLanguageTable();
         createUserTable();
     }
 
+    //Establishes connection method
     public void establishConnection() {
         if (this.conn == null) {
             try {
@@ -43,10 +45,12 @@ public class TranslatorDatabase {
         }
     }
 
+    //Return method which returns the conenction
     public Connection getConnection() {
         return this.conn;
     }
 
+    //Closes connections method
     public void closeConnections() {
         if (conn != null) {
             try {
@@ -57,6 +61,8 @@ public class TranslatorDatabase {
         }
     }
 
+    //Creates language tables inside the database storing english and translated words
+    //If table does not exist creates it, if it does prints a friendly message.
     public void createLanguageTable() {
         try (Statement statement = conn.createStatement()) {
             String createTableSpannish = "CREATE TABLE SPANNISH("
@@ -88,6 +94,8 @@ public class TranslatorDatabase {
         }
     }
 
+    //Creates user tables inside the database storing name and score.
+    //If table does not exist creates it, if it does prints a friendly message.
     public void createUserTable() {
         try (Connection conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD)) {
             try (Statement statement = conn.createStatement()) {
@@ -107,6 +115,7 @@ public class TranslatorDatabase {
         }
     }
 
+    //Updates the database
     public void updateDatabase(String sql) 
     {
         Connection connection = this.conn;
@@ -126,6 +135,9 @@ public class TranslatorDatabase {
         }
     }
 
+    //Checks if the user already exists in the database
+    //if they exist, updates the database
+    //if not they are created and inserted into database
     public void updateUser(String name, int score) 
     {
         try 
@@ -152,35 +164,36 @@ public class TranslatorDatabase {
         }
     }
 
+    //Query method which querrys the database
     public ResultSet Querry(String sql) 
     {
-    Connection connection = this.conn;
-    Statement statement = null;
-    ResultSet resultSet = null;
+     Connection connection = this.conn;
+     Statement statement = null;
+     ResultSet resultSet = null;
 
-    if (sql == null || sql.isEmpty()) 
-    {
-        return null;
+      if (sql == null || sql.isEmpty()) 
+      {
+         return null;
+      }
+
+      try 
+      {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(sql);
+      } 
+      catch (Exception e) 
+      {
+          e.printStackTrace();
+      }
+      return resultSet;
     }
 
-    try 
-    {
-        statement = connection.createStatement();
-        resultSet = statement.executeQuery(sql);
-    } 
-    catch (Exception e) 
-    {
-        e.printStackTrace();
-    }
-    return resultSet;
-}
-
-
+    //Retrieves english word and translated word from database and stores them in our list
     public List<VocabularyItem> loadLanguageFromDatabase(Language language) 
     {
-    ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
-    try 
-    {
+       ArrayList<VocabularyItem> languageVocabList = new ArrayList<VocabularyItem>();
+       try 
+       {
         if (language != null) 
         {
             Connection connection = this.conn;
@@ -204,9 +217,9 @@ public class TranslatorDatabase {
         e.printStackTrace();
     }
     return languageVocabList;
-}
+    }
 
-    
+    //Retrieves name from database and orders first 10 rows of score in descending order
     public ResultSet getHighestScores()
     {
         try
