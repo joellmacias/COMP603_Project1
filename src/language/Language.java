@@ -41,6 +41,7 @@ public class Language {
     {
         return vocabularyItemList;
     }
+    // generates a random vocabulary item from the language item list.
     public VocabularyItem getRandomVocabularyItem() {
         Random random = new Random();
         int randomIndex = random.nextInt(getVocabularyItemList().size());

@@ -19,6 +19,8 @@ public class FlashcardInterface extends javax.swing.JFrame {
     /**
      * Creates new form FlashcardInterface
      */
+    
+    //flash card constructor starting the first flashcard.
     public FlashcardInterface(User user, Language language) {
         this.user = user;
         this.language = language;
@@ -170,6 +172,7 @@ public class FlashcardInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // if return is clicked go back to menu.
     private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to go back to Menu?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             new MenuInterface(user, language).setVisible(true);
@@ -177,6 +180,8 @@ public class FlashcardInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_returnButtonActionPerformed
 
+    //if next is clicked, get new flashcard by calling random vocabulary item
+    //method and set the text.
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
 
         currentFlashcard = language.getRandomVocabularyItem();
@@ -187,6 +192,7 @@ public class FlashcardInterface extends javax.swing.JFrame {
 
     }//GEN-LAST:event_nextButtonActionPerformed
 
+    //reveal button reveals the flashcards translation
     private void revealButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_revealButtonActionPerformed
         if (currentFlashcard!= null)
         {
@@ -194,6 +200,7 @@ public class FlashcardInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_revealButtonActionPerformed
 
+    //exits the program.
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Do you want to end the program?", "Language Vocab Application", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
