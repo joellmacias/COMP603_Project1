@@ -52,20 +52,6 @@ public class TranslatorDatabaseTest {
     }
 
     /**
-     * Test of getConnection method, of class TranslatorDatabase.
-     */
-    @Test
-    public void testGetConnection() {
-        System.out.println("getConnection");
-        TranslatorDatabase instance = new TranslatorDatabase();
-        Connection expResult = null;
-        Connection result = instance.getConnection();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
      * Test of closeConnections method, of class TranslatorDatabase.
      */
     @Test
@@ -120,8 +106,8 @@ public class TranslatorDatabaseTest {
     @Test
     public void testUpdateUser() {
         System.out.println("updateUser");
-        String name = "";
-        int score = 0;
+        String name = "Bishop";
+        int score = 3;
         TranslatorDatabase instance = new TranslatorDatabase();
         instance.updateUser(name, score);
         // TODO review the generated test code and remove the default call to fail.
@@ -149,11 +135,10 @@ public class TranslatorDatabaseTest {
     @Test
     public void testLoadLanguageFromDatabase() {
         System.out.println("loadLanguageFromDatabase");
-        Language language = null;
+        Language language = new Language("SAMOAN");
         TranslatorDatabase instance = new TranslatorDatabase();
-        List<VocabularyItem> expResult = null;
         List<VocabularyItem> result = instance.loadLanguageFromDatabase(language);
-        assertEquals(expResult, result);
+        assertNotNull(result);
         // TODO review the generated test code and remove the default call to fail.
        // fail("The test case is a prototype.");
     }
@@ -165,9 +150,8 @@ public class TranslatorDatabaseTest {
     public void testGetHighestScores() {
         System.out.println("getHighestScores");
         TranslatorDatabase instance = new TranslatorDatabase();
-        ResultSet expResult = null;
         ResultSet result = instance.getHighestScores();
-        assertEquals(expResult, result);
+        assertNotNull(result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
     }
